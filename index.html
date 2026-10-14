@@ -1,0 +1,2041 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>O Cuquedo - O Meu Cantinho de Brincar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            font-family: 'Quicksand', sans-serif;
+            touch-action: manipulation;
+        }
+        .font-title {
+            font-family: 'Fredoka One', cursive;
+        }
+        .wiggle:hover, .wiggle:active {
+            animation: wiggleAnim 0.4s ease-in-out infinite alternate;
+        }
+        @keyframes wiggleAnim {
+            0% { transform: rotate(-4deg) scale(1.03); }
+            100% { transform: rotate(4deg) scale(1.05); }
+        }
+        @keyframes bounceGently {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .bounce-soft {
+            animation: bounceGently 2.2s infinite ease-in-out;
+        }
+        .shadow-fun {
+            box-shadow: 0 8px 0 rgba(0, 0, 0, 0.12);
+        }
+        .shadow-fun:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 rgba(0, 0, 0, 0.12);
+        }
+        /* Corkboard effect for the works gallery */
+        .corkboard {
+            background-color: #f7dfaf;
+            background-image: radial-gradient(#deb887 15%, transparent 16%), radial-gradient(#d2a679 15%, transparent 16%);
+            background-size: 28px 28px;
+            background-position: 0 0, 14px 14px;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #93c5fd;
+            border-radius: 999px;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-amber-50 via-lime-50 to-emerald-100 min-h-screen text-slate-800 flex flex-col justify-between overflow-x-hidden">
+
+    <!-- Top Header -->
+    <header class="bg-white/90 backdrop-blur-md sticky top-0 z-40 border-b-4 border-amber-300 shadow-sm px-4 py-3">
+        <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3">
+            
+            <!-- Logo / Brand with animated mascot -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('inicio')">
+                <div class="w-12 h-12 bg-white border-2 border-amber-300 rounded-full flex items-center justify-center shadow-md relative overflow-hidden wiggle p-0.5">
+                    <!-- Cuquedo real mascot image -->
+                    <img id="mascotHeaderImg" 
+                         src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 520 540' width='100%' height='100%'><g fill='none' stroke='%230f172a' stroke-linecap='round' stroke-linejoin='round'><!-- Top Wild Tendrils --><path d='M255 170 C240 100 220 50 230 18 C232 12 238 20 235 30' stroke-width='3'/><path d='M290 175 C310 110 330 65 350 45 C355 40 360 48 354 58' stroke-width='2.8'/><path d='M275 160 C270 95 272 55 275 25' stroke-width='2.5'/><path d='M235 180 C215 130 190 95 195 55' stroke-width='2.2'/><path d='M315 190 C345 135 375 100 390 75' stroke-width='2.2'/><!-- Left Arm with Wrist Knot --><path d='M205 245 C155 230 110 215 85 205' stroke-width='4.5'/><circle cx='82' cy='204' r='5' fill='%230f172a'/><path d='M82 204 C65 190 45 185 30 180 M82 204 C60 200 40 205 32 210 M82 204 C65 215 50 225 40 235' stroke-width='3'/><!-- Right Arm with Wrist Knot --><path d='M355 240 C395 250 400 290 390 325 C385 345 398 355 410 360' stroke-width='4.5'/><circle cx='410' cy='360' r='5' fill='%230f172a'/><path d='M410 360 C428 370 442 380 450 395 M410 360 C425 385 435 405 440 420 M410 360 C418 395 420 415 422 430' stroke-width='3'/><!-- Long Stick Legs --><path d='M225 390 C210 440 195 490 180 520' stroke-width='5'/><path d='M180 520 C165 528 145 532 135 535 M180 520 C170 535 160 545 155 548 M180 520 C185 535 190 545 195 548' stroke-width='3.5'/><path d='M335 390 C345 440 355 490 360 520' stroke-width='5'/><path d='M360 520 C345 530 330 538 320 540 M360 520 C355 538 350 548 348 550 M360 520 C370 535 380 545 388 548' stroke-width='3.5'/><!-- Dense Tangled Yarn Body --><ellipse cx='280' cy='295' rx='120' ry='110' fill='%230f172a'/><g stroke='%230f172a' stroke-width='3'><path d='M170 240 C140 270 145 340 185 380 C235 430 330 425 375 375 C415 330 410 250 365 210 C310 170 215 180 170 240 Z'/><path d='M150 280 C130 320 160 380 220 405 C290 435 365 410 400 360 C430 310 410 240 360 200 C300 160 200 175 160 230'/><path d='M180 200 C240 150 340 160 385 215 C420 260 410 340 365 385 C310 430 220 420 170 370 C130 320 140 240 190 190'/><path d='M155 330 C135 270 170 210 230 180 C300 150 380 180 410 240 C435 300 395 380 330 410 C250 440 180 390 155 330'/><path d='M140 260 C120 300 135 350 175 390 M390 230 C425 270 420 330 395 375 M210 170 C260 140 320 145 370 180'/></g><!-- Arched Forehead / Eyebrow Band --><path d='M215 228 C250 212 295 212 335 232' stroke='%23ffffff' stroke-width='5'/><path d='M225 224 L225 232 M238 220 L238 228 M252 217 L252 225 M266 216 L266 224 M280 216 L280 224 M295 218 L295 226 M310 221 L310 229 M325 226 L325 234' stroke='%23ffffff' stroke-width='2.5'/><!-- Big Surprised Eyes --><ellipse cx='242' cy='262' rx='25' ry='24' fill='%23ffffff' stroke='%230f172a' stroke-width='4.5'/><ellipse cx='285' cy='262' rx='19' ry='20' fill='%23ffffff' stroke='%230f172a' stroke-width='4.5'/><!-- Crossed Pupils --><circle cx='253' cy='260' r='5.5' fill='%230f172a'/><circle cx='276' cy='260' r='5.5' fill='%230f172a'/><!-- Wide Smile with Teeth --><path d='M215 340 C265 355 315 330 338 305 C295 335 245 342 215 340 Z' fill='%23ffffff' stroke='%230f172a' stroke-width='3.5'/><path d='M225 340 L225 344 M238 342 L238 346 M252 342 L252 347 M266 341 L266 346 M280 338 L280 344 M295 334 L295 341 M310 327 L310 335 M325 318 L325 326' stroke='%230f172a' stroke-width='2.5'/></g></svg>" 
+                         alt="O Cuquedo" 
+                         class="w-full h-full object-contain mix-blend-multiply" />
+                </div>
+                <div>
+                    <h1 class="font-title text-2xl md:text-3xl text-emerald-800 tracking-wide flex items-center gap-2">
+                        O Cuquedo
+                        <span class="text-xs bg-amber-200 text-amber-900 px-2 py-0.5 rounded-full font-semibold">Pré-Escolar</span>
+                    </h1>
+                    <p class="text-xs text-emerald-600 font-bold hidden sm:block">"Quem tem medo do Cuquedo?"</p>
+                </div>
+            </div>
+
+            <!-- Voice and sound toggle -->
+            <div class="flex items-center space-x-2">
+                <button id="btnVoiceGuide" onclick="speakText('Olá amiguinho! Bem-vindo ao mundo do Cuquedo! O que queres fazer hoje?')" 
+                        class="bg-sky-400 hover:bg-sky-500 text-white font-title text-sm md:text-base px-3 py-2 rounded-2xl flex items-center gap-2 shadow-fun transition transform active:scale-95"
+                        title="Ouvir ajuda da mascote">
+                    <i class="fa-solid fa-volume-high text-lg"></i>
+                    <span class="hidden md:inline">Ouvir Guia</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation bar for kids -->
+        <nav class="max-w-4xl mx-auto mt-3 grid grid-cols-4 gap-2 text-center">
+            <button onclick="switchTab('inicio')" id="nav-inicio" class="nav-btn bg-emerald-500 text-white font-title py-2 px-1 rounded-2xl shadow-fun transition text-xs sm:text-sm md:text-base flex flex-col sm:flex-row items-center justify-center gap-1.5">
+                <i class="fa-solid fa-house"></i>
+                <span>Início</span>
+            </button>
+            <button onclick="switchTab('pintura')" id="nav-pintura" class="nav-btn bg-white hover:bg-amber-100 text-amber-800 font-title py-2 px-1 rounded-2xl shadow-fun transition text-xs sm:text-sm md:text-base flex flex-col sm:flex-row items-center justify-center gap-1.5 border-2 border-amber-200">
+                <i class="fa-solid fa-palette text-amber-500"></i>
+                <span>Pintar</span>
+            </button>
+            <button onclick="switchTab('jogos')" id="nav-jogos" class="nav-btn bg-white hover:bg-purple-100 text-purple-800 font-title py-2 px-1 rounded-2xl shadow-fun transition text-xs sm:text-sm md:text-base flex flex-col sm:flex-row items-center justify-center gap-1.5 border-2 border-purple-200">
+                <i class="fa-solid fa-gamepad text-purple-500"></i>
+                <span>Jogos</span>
+            </button>
+            <button onclick="switchTab('mural')" id="nav-mural" class="nav-btn bg-white hover:bg-rose-100 text-rose-800 font-title py-2 px-1 rounded-2xl shadow-fun transition text-xs sm:text-sm md:text-base flex flex-col sm:flex-row items-center justify-center gap-1.5 border-2 border-rose-200">
+                <i class="fa-solid fa-images text-rose-500"></i>
+                <span>Mural</span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-6xl w-full mx-auto p-4 flex-1">
+
+        <!-- ======================= SECTION 1: INÍCIO ======================= -->
+        <section id="view-inicio" class="view-panel transition-all duration-300">
+            <!-- Welcome Hero -->
+            <div class="bg-gradient-to-r from-emerald-500 to-teal-600 rounded-3xl p-6 md:p-8 text-white shadow-xl relative overflow-hidden mb-8 border-4 border-emerald-300">
+                <div class="relative z-10 max-w-xl">
+                    <div class="inline-flex items-center gap-2 bg-emerald-700/60 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold mb-3">
+                        <img id="heroBadgeCuquedoImg" class="w-5 h-5 object-contain" alt="O Cuquedo">
+                        <span>História Encantadora da Selva</span>
+                    </div>
+                    <h2 class="font-title text-3xl md:text-5xl leading-tight mb-2">Quem anda aí no bosque a assustar?</h2>
+                    <p class="text-emerald-100 text-base md:text-lg mb-6 font-semibold">
+                        Será um bicho pequenino ou grandalhão? Vem brincar com o Cuquedo, pintar monstros fofinhos e anexar os teus lindos trabalhos!
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <button onclick="switchTab('pintura')" class="bg-amber-400 hover:bg-amber-300 text-amber-950 font-title text-lg px-6 py-3 rounded-2xl shadow-fun transition flex items-center gap-2">
+                            <i class="fa-solid fa-paint-roller"></i>
+                            <span>Desenhar Agora</span>
+                        </button>
+                        <button onclick="switchTab('mural')" class="bg-rose-500 hover:bg-rose-400 text-white font-title text-lg px-6 py-3 rounded-2xl shadow-fun transition flex items-center gap-2">
+                            <i class="fa-solid fa-camera"></i>
+                            <span>Ver Trabalhos</span>
+                        </button>
+                        <button onclick="switchTab('jogos')" class="bg-white/20 hover:bg-white/30 text-white font-title text-lg px-6 py-3 rounded-2xl shadow-fun transition border-2 border-white/40 flex items-center gap-2">
+                            <i class="fa-solid fa-dice"></i>
+                            <span>Jogar e Procurar</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Cuquedo Character Graphic -->
+                <div class="hidden lg:flex items-center justify-center absolute -right-2 -bottom-2 w-72 h-72 bounce-soft pointer-events-none bg-white/25 backdrop-blur-sm rounded-full p-3 shadow-lg border-2 border-white/30">
+                    <img id="heroCuquedoImg" 
+                         src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 520 540' width='100%' height='100%'><g fill='none' stroke='%230f172a' stroke-linecap='round' stroke-linejoin='round'><path d='M255 170 C240 100 220 50 230 18 C232 12 238 20 235 30' stroke-width='3'/><path d='M290 175 C310 110 330 65 350 45 C355 40 360 48 354 58' stroke-width='2.8'/><path d='M275 160 C270 95 272 55 275 25' stroke-width='2.5'/><path d='M235 180 C215 130 190 95 195 55' stroke-width='2.2'/><path d='M315 190 C345 135 375 100 390 75' stroke-width='2.2'/><path d='M205 245 C155 230 110 215 85 205' stroke-width='4.5'/><circle cx='82' cy='204' r='5' fill='%230f172a'/><path d='M82 204 C65 190 45 185 30 180 M82 204 C60 200 40 205 32 210 M82 204 C65 215 50 225 40 235' stroke-width='3'/><path d='M355 240 C395 250 400 290 390 325 C385 345 398 355 410 360' stroke-width='4.5'/><circle cx='410' cy='360' r='5' fill='%230f172a'/><path d='M410 360 C428 370 442 380 450 395 M410 360 C425 385 435 405 440 420 M410 360 C418 395 420 415 422 430' stroke-width='3'/><path d='M225 390 C210 440 195 490 180 520' stroke-width='5'/><path d='M180 520 C165 528 145 532 135 535 M180 520 C170 535 160 545 155 548 M180 520 C185 535 190 545 195 548' stroke-width='3.5'/><path d='M335 390 C345 440 355 490 360 520' stroke-width='5'/><path d='M360 520 C345 530 330 538 320 540 M360 520 C355 538 350 548 348 550 M360 520 C370 535 380 545 388 548' stroke-width='3.5'/><ellipse cx='280' cy='295' rx='120' ry='110' fill='%230f172a'/><g stroke='%230f172a' stroke-width='3'><path d='M170 240 C140 270 145 340 185 380 C235 430 330 425 375 375 C415 330 410 250 365 210 C310 170 215 180 170 240 Z'/><path d='M150 280 C130 320 160 380 220 405 C290 435 365 410 400 360 C430 310 410 240 360 200 C300 160 200 175 160 230'/><path d='M180 200 C240 150 340 160 385 215 C420 260 410 340 365 385 C310 430 220 420 170 370 C130 320 140 240 190 190'/><path d='M155 330 C135 270 170 210 230 180 C300 150 380 180 410 240 C435 300 395 380 330 410 C250 440 180 390 155 330'/><path d='M140 260 C120 300 135 350 175 390 M390 230 C425 270 420 330 395 375 M210 170 C260 140 320 145 370 180'/></g><path d='M215 228 C250 212 295 212 335 232' stroke='%23ffffff' stroke-width='5'/><path d='M225 224 L225 232 M238 220 L238 228 M252 217 L252 225 M266 216 L266 224 M280 216 L280 224 M295 218 L295 226 M310 221 L310 229 M325 226 L325 234' stroke='%23ffffff' stroke-width='2.5'/><ellipse cx='242' cy='262' rx='25' ry='24' fill='%23ffffff' stroke='%230f172a' stroke-width='4.5'/><ellipse cx='285' cy='262' rx='19' ry='20' fill='%23ffffff' stroke='%230f172a' stroke-width='4.5'/><circle cx='253' cy='260' r='5.5' fill='%230f172a'/><circle cx='276' cy='260' r='5.5' fill='%230f172a'/><path d='M215 340 C265 355 315 330 338 305 C295 335 245 342 215 340 Z' fill='%23ffffff' stroke='%230f172a' stroke-width='3.5'/><path d='M225 340 L225 344 M238 342 L238 346 M252 342 L252 347 M266 341 L266 346 M280 338 L280 344 M295 334 L295 341 M310 327 L310 335 M325 318 L325 326' stroke='%230f172a' stroke-width='2.5'/></g></svg>" 
+                         alt="O Cuquedo" 
+                         class="w-full h-full object-contain mix-blend-multiply filter drop-shadow-xl" />
+                </div>
+            </div>
+
+            <!-- Activity Cards Carousel/Grid -->
+            <h3 class="font-title text-2xl text-emerald-900 mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-sparkles text-amber-500"></i>
+                Escolhe a tua brincadeira
+            </h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Card 1 -->
+                <div onclick="switchTab('pintura')" class="bg-white rounded-3xl p-5 border-4 border-amber-200 shadow-md hover:shadow-xl transition transform hover:-translate-y-1 cursor-pointer group flex flex-col justify-between">
+                    <div>
+                        <div class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-palette"></i>
+                        </div>
+                        <h4 class="font-title text-xl text-slate-800 mb-1">Ateliê do Cuquedo</h4>
+                        <p class="text-slate-600 text-sm font-semibold">Pinta com as tuas cores preferidas, usa carimbos dos bichos e guarda no teu mural!</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-amber-600 font-bold text-sm">
+                        <span>Vamos pintar</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div onclick="startHideAndSeek()" class="bg-white rounded-3xl p-5 border-4 border-emerald-200 shadow-md hover:shadow-xl transition transform hover:-translate-y-1 cursor-pointer group flex flex-col justify-between">
+                    <div>
+                        <div class="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                        <h4 class="font-title text-xl text-slate-800 mb-1">Onde está o Cuquedo?</h4>
+                        <p class="text-slate-600 text-sm font-semibold">Clica nos arbustos da savana e procura o Cuquedo antes que ele dê um pulo!</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-emerald-600 font-bold text-sm">
+                        <span>Procurar agora</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div onclick="switchTab('mural')" class="bg-white rounded-3xl p-5 border-4 border-rose-200 shadow-md hover:shadow-xl transition transform hover:-translate-y-1 cursor-pointer group flex flex-col justify-between">
+                    <div>
+                        <div class="w-16 h-16 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-camera"></i>
+                        </div>
+                        <h4 class="font-title text-xl text-slate-800 mb-1">O Meu Mural</h4>
+                        <p class="text-slate-600 text-sm font-semibold">Tira foto aos teus desenhos em papel ou colagens e anexa aqui para mostrar à família!</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-rose-600 font-bold text-sm">
+                        <span>Ver e Anexar</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Funny Sound Board for Toddlers -->
+            <div class="mt-8 bg-white/80 rounded-3xl p-5 border-3 border-sky-200 shadow-md">
+                <h4 class="font-title text-lg text-sky-900 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-music text-sky-500"></i>
+                    Vozes dos Bichinhos da História
+                </h4>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <button onclick="playAnimalSound('girafa')" class="p-3 bg-amber-50 hover:bg-amber-100 rounded-2xl border-2 border-amber-200 flex items-center gap-3 transition transform active:scale-95 text-left">
+                        <span class="text-3xl">🦒</span>
+                        <div>
+                            <div class="font-title text-sm text-amber-900">Girafa</div>
+                            <div class="text-xs text-amber-700">"Olha lá em cima!"</div>
+                        </div>
+                    </button>
+                    <button onclick="playAnimalSound('elefante')" class="p-3 bg-slate-100 hover:bg-slate-200 rounded-2xl border-2 border-slate-300 flex items-center gap-3 transition transform active:scale-95 text-left">
+                        <span class="text-3xl">🐘</span>
+                        <div>
+                            <div class="font-title text-sm text-slate-900">Elefante</div>
+                            <div class="text-xs text-slate-700">"Fuumm! Fuumm!"</div>
+                        </div>
+                    </button>
+                    <button onclick="playAnimalSound('hipopotamo')" class="p-3 bg-indigo-50 hover:bg-indigo-100 rounded-2xl border-2 border-indigo-200 flex items-center gap-3 transition transform active:scale-95 text-left">
+                        <span class="text-3xl">🦛</span>
+                        <div>
+                            <div class="font-title text-sm text-indigo-900">Hipopótamo</div>
+                            <div class="text-xs text-indigo-700">"Tchibum na água!"</div>
+                        </div>
+                    </button>
+                    <button onclick="playAnimalSound('cuquedo')" class="p-3 bg-rose-50 hover:bg-rose-100 rounded-2xl border-2 border-rose-300 flex items-center gap-3 transition transform active:scale-95 text-left">
+                        <img id="soundboardCuquedoImg" class="w-10 h-10 object-contain" alt="O Cuquedo">
+                        <div>
+                            <div class="font-title text-sm text-rose-900">O Cuquedo</div>
+                            <div class="text-xs text-rose-700 font-bold">"BUUUUH!"</div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= SECTION 2: ATELIÊ DE PINTURA ======================= -->
+        <section id="view-pintura" class="view-panel hidden transition-all duration-300">
+            <div class="bg-white rounded-3xl shadow-xl border-4 border-amber-300 p-4 md:p-6">
+                
+                <!-- Studio Header with actions -->
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b-2 border-amber-100">
+                    <div class="flex items-center gap-2">
+                        <span class="text-3xl">🎨</span>
+                        <div>
+                            <h2 class="font-title text-xl md:text-2xl text-amber-900">Ateliê do Cuquedo</h2>
+                            <p class="text-xs text-slate-500 font-semibold">Desenha o teu monstrinho, pinta a selva e salva no mural!</p>
+                        </div>
+                        <button onclick="speakText('Bem-vindo ao Ateliê! Escolhe uma cor alegre ou um carimbo divertido e desenha com o teu dedinho na tela branca! Quando terminares, clica no botão amarelo para guardar no mural!')" class="ml-2 bg-amber-400 hover:bg-amber-500 text-amber-950 p-2 rounded-2xl shadow-fun transition" title="Ouvir explicação">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2">
+                        <button onclick="clearCanvas()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-2xl font-title text-xs md:text-sm flex items-center gap-1.5 transition">
+                            <i class="fa-solid fa-eraser"></i> Limpar Tudo
+                        </button>
+                        <button onclick="loadCuquedoColoringOutline()" class="px-3 py-2 bg-purple-100 hover:bg-purple-200 text-purple-800 rounded-2xl font-title text-xs md:text-sm flex items-center gap-1.5 transition">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> Pôr Cuquedo para Colorir
+                        </button>
+                        <button onclick="downloadCanvasImage()" class="px-3 py-2 bg-emerald-100 hover:bg-emerald-200 text-emerald-800 rounded-2xl font-title text-xs md:text-sm flex items-center gap-1.5 transition">
+                            <i class="fa-solid fa-download"></i> Descarregar
+                        </button>
+                        <button onclick="saveCanvasToGalleryModal()" class="px-4 py-2 bg-amber-400 hover:bg-amber-500 text-amber-950 rounded-2xl font-title text-sm md:text-base shadow-fun flex items-center gap-2 transition transform active:scale-95">
+                            <i class="fa-solid fa-star text-white"></i> Guardar no Mural
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Drawing Palette & Canvas Layout -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+                    
+                    <!-- Left Toolbar: Tools, Sizes & Colors -->
+                    <div class="lg:col-span-3 flex flex-col gap-4 bg-amber-50/70 p-3 rounded-2xl border-2 border-amber-200">
+                        
+                        <!-- Tool selection -->
+                        <div>
+                            <label class="text-xs font-bold text-amber-900 uppercase tracking-wider block mb-2">Ferramenta</label>
+                            <div class="grid grid-cols-3 gap-2">
+                                <button onclick="setTool('brush')" id="tool-brush" class="tool-btn bg-amber-400 text-amber-950 p-2.5 rounded-xl font-title text-xs flex flex-col items-center justify-center gap-1 shadow-sm">
+                                    <i class="fa-solid fa-paint-brush text-lg"></i>
+                                    <span>Pincel</span>
+                                </button>
+                                <button onclick="setTool('eraser')" id="tool-eraser" class="tool-btn bg-white text-slate-700 p-2.5 rounded-xl font-title text-xs flex flex-col items-center justify-center gap-1 shadow-sm border">
+                                    <i class="fa-solid fa-eraser text-lg text-slate-400"></i>
+                                    <span>Borracha</span>
+                                </button>
+                                <button onclick="setTool('stamp')" id="tool-stamp" class="tool-btn bg-white text-slate-700 p-2.5 rounded-xl font-title text-xs flex flex-col items-center justify-center gap-1 shadow-sm border">
+                                    <i class="fa-solid fa-stamp text-lg text-rose-500"></i>
+                                    <span>Carimbo</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Brush Size Selector -->
+                        <div id="size-selector-box">
+                            <label class="text-xs font-bold text-amber-900 uppercase tracking-wider block mb-2">Grossura do Traço</label>
+                            <div class="flex items-center justify-around bg-white p-2 rounded-xl border border-amber-200">
+                                <button onclick="setBrushSize(6, this)" class="size-btn w-7 h-7 rounded-full flex items-center justify-center bg-amber-100 hover:bg-amber-200">
+                                    <div class="w-2 h-2 rounded-full bg-slate-800"></div>
+                                </button>
+                                <button onclick="setBrushSize(14, this)" class="size-btn w-9 h-9 rounded-full flex items-center justify-center bg-amber-400 border-2 border-amber-600">
+                                    <div class="w-3.5 h-3.5 rounded-full bg-slate-800"></div>
+                                </button>
+                                <button onclick="setBrushSize(26, this)" class="size-btn w-11 h-11 rounded-full flex items-center justify-center bg-amber-100 hover:bg-amber-200">
+                                    <div class="w-6 h-6 rounded-full bg-slate-800"></div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Stamps palette (shown when stamp tool is active) -->
+                        <div id="stamps-box" class="hidden">
+                            <label class="text-xs font-bold text-amber-900 uppercase tracking-wider block mb-2">Escolhe o Carimbo</label>
+                            <div class="grid grid-cols-4 gap-2 bg-white p-2 rounded-xl border border-amber-200 text-2xl">
+                                <button onclick="selectStamp('🐾')" class="stamp-opt p-2 rounded-lg hover:bg-amber-100 text-center">🐾</button>
+                                <button onclick="selectStamp('🦁')" class="stamp-opt p-2 rounded-lg hover:bg-amber-100 text-center">🦁</button>
+                                <button onclick="selectStamp('🦒')" class="stamp-opt p-2 rounded-lg hover:bg-amber-100 text-center">🦒</button>
+                                <button onclick="selectStamp('🐘')" class="stamp-opt p-2 rounded-lg hover:bg-amber-100 text-center">🐘</button>
+                                <button onclick="selectStamp('🦛')" class="stamp-opt p-2 rounded-lg hover:bg-amber-100 text-center">🦛</button>
+                                <button onclick="selectStamp('🌿')" class="stamp-opt p-2 rounded-lg hover:bg-amber-100 text-center">🌿</button>
+                                <button onclick="selectStamp('⭐')" class="stamp-opt p-2 rounded-lg hover:bg-amber-100 text-center">⭐</button>
+                                <button onclick="selectStamp('👀')" class="stamp-opt p-2 rounded-lg hover:bg-amber-100 text-center">👀</button>
+                            </div>
+                        </div>
+
+                        <!-- Color Palette -->
+                        <div id="colors-box">
+                            <label class="text-xs font-bold text-amber-900 uppercase tracking-wider block mb-2">Cores Alegres</label>
+                            <div class="grid grid-cols-5 gap-2 bg-white p-2.5 rounded-xl border border-amber-200">
+                                <!-- Pre-school favorite colors + Cuquedo brown -->
+                                <button onclick="setColor('#3e2723')" class="w-8 h-8 rounded-full border-2 border-white shadow hover:scale-110 transition bg-[#3e2723]" title="Castanho Cuquedo"></button>
+                                <button onclick="setColor('#ef4444')" class="w-8 h-8 rounded-full border-2 border-white shadow hover:scale-110 transition bg-red-500"></button>
+                                <button onclick="setColor('#f97316')" class="w-8 h-8 rounded-full border-2 border-white shadow hover:scale-110 transition bg-orange-500"></button>
+                                <button onclick="setColor('#eab308')" class="w-8 h-8 rounded-full border-2 border-white shadow hover:scale-110 transition bg-yellow-500"></button>
+                                <button onclick="setColor('#22c55e')" class="w-8 h-8 rounded-full border-2 border-white shadow hover:scale-110 transition bg-green-500 ring-2 ring-emerald-600 color-active"></button>
+                                <button onclick="setColor('#06b6d4')" class="w-8 h-8 rounded-full border-2 border-white shadow hover:scale-110 transition bg-cyan-500"></button>
+                                <button onclick="setColor('#3b82f6')" class="w-8 h-8 rounded-full border-2 border-white shadow hover:scale-110 transition bg-blue-500"></button>
+                                <button onclick="setColor('#a855f7')" class="w-8 h-8 rounded-full border-2 border-white shadow hover:scale-110 transition bg-purple-500"></button>
+                                <button onclick="setColor('#ec4899')" class="w-8 h-8 rounded-full border-2 border-white shadow hover:scale-110 transition bg-pink-500"></button>
+                                <button onclick="setColor('#111827')" class="w-8 h-8 rounded-full border-2 border-white shadow hover:scale-110 transition bg-slate-900"></button>
+                            </div>
+                        </div>
+
+                        <!-- Fun Prompt for non-readers -->
+                        <div class="bg-amber-100 text-amber-900 p-2.5 rounded-xl text-xs flex items-center gap-2">
+                            <i class="fa-solid fa-lightbulb text-amber-600 text-base"></i>
+                            <span><strong>Ideia:</strong> Desenha o Cuquedo com olhos bem arregalados e muito pelo!</span>
+                        </div>
+                    </div>
+
+                    <!-- Right Area: The Interactive Canvas -->
+                    <div class="lg:col-span-9 flex flex-col items-center">
+                        <div class="relative w-full bg-white rounded-2xl border-4 border-dashed border-amber-200 overflow-hidden shadow-inner flex items-center justify-center" style="min-height: 440px; touch-action: none;">
+                            <canvas id="paintCanvas" class="w-full h-full block cursor-crosshair"></canvas>
+                        </div>
+                        <div class="w-full flex justify-between items-center mt-2 px-2 text-xs text-slate-500">
+                            <span>Dica: Toca ou arrasta com o dedo no ecrã para pintar!</span>
+                            <span id="canvasStatus" class="font-bold text-amber-700">Pronto para pintar!</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= SECTION 3: JOGOS ======================= -->
+        <section id="view-jogos" class="view-panel hidden transition-all duration-300">
+            <!-- Game selector buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-6">
+                <button onclick="toggleGameSubMode('esconde')" id="btnSubEsconde" class="px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl font-title text-sm sm:text-base bg-emerald-500 text-white shadow-fun flex items-center gap-2">
+                    <i class="fa-solid fa-tree"></i>
+                    <span>Onde está o Cuquedo?</span>
+                </button>
+                <button onclick="toggleGameSubMode('memoria')" id="btnSubMemoria" class="px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl font-title text-sm sm:text-base bg-white text-purple-800 border-2 border-purple-200 shadow-fun flex items-center gap-2">
+                    <i class="fa-solid fa-brain"></i>
+                    <span>Jogo da Memória</span>
+                </button>
+                <button onclick="toggleGameSubMode('figurafundo')" id="btnSubFiguraFundo" class="px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl font-title text-sm sm:text-base bg-white text-amber-800 border-2 border-amber-200 shadow-fun flex items-center gap-2">
+                    <i class="fa-solid fa-shapes"></i>
+                    <span>Figura-Fundo</span>
+                </button>
+                <button onclick="toggleGameSubMode('cartoes')" id="btnSubCartoes" class="px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl font-title text-sm sm:text-base bg-white text-rose-800 border-2 border-rose-200 shadow-fun flex items-center gap-2">
+                    <i class="fa-solid fa-id-card"></i>
+                    <span>Cartões dos Bichos (V ou F)</span>
+                </button>
+                <button onclick="toggleGameSubMode('cores')" id="btnSubCores" class="px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl font-title text-sm sm:text-base bg-white text-emerald-800 border-2 border-emerald-200 shadow-fun flex items-center gap-2">
+                    <i class="fa-solid fa-seedling"></i>
+                    <span>Separar Plantas e Flores</span>
+                </button>
+                <button onclick="toggleGameSubMode('contar')" id="btnSubContar" class="px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl font-title text-sm sm:text-base bg-white text-sky-800 border-2 border-sky-200 shadow-fun flex items-center gap-2">
+                    <i class="fa-solid fa-calculator"></i>
+                    <span>Contar os Animais</span>
+                </button>
+            </div>
+
+            <!-- GAME 1: Onde Está o Cuquedo? (Hide and Seek) -->
+            <div id="game-esconde" class="bg-gradient-to-b from-sky-200 via-amber-100 to-emerald-200 rounded-3xl p-6 border-4 border-emerald-400 shadow-xl relative min-h-[460px] flex flex-col justify-between">
+                <div>
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                        <div class="flex items-center gap-3">
+                            <div>
+                                <h3 class="font-title text-2xl text-emerald-950 flex items-center gap-2">
+                                    <span>🌳</span> Onde está o Cuquedo?
+                                </h3>
+                                <p class="text-sm font-semibold text-emerald-900">Toca nos arbustos! Será que encontras o Cuquedo ou um amigo da savana?</p>
+                            </div>
+                            <button onclick="speakText('Onde está o Cuquedo? Carrega com o dedinho nos arbustos verdes para procurar onde ele se escondeu! Cuidado com o susto!')" class="bg-emerald-600 hover:bg-emerald-700 text-white p-2.5 rounded-2xl shadow-fun transition" title="Ouvir instrução">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
+                        </div>
+                        <div class="bg-white/90 backdrop-blur px-4 py-2 rounded-2xl font-title text-emerald-900 border border-emerald-200 shadow-sm flex items-center gap-2">
+                            <span>Pontos:</span>
+                            <span id="hideSeekScore" class="text-2xl text-amber-600">0</span>
+                        </div>
+                    </div>
+
+                    <!-- Bushes playground -->
+                    <div id="bushesGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-6">
+                        <!-- Dynamic bushes generated in JS -->
+                    </div>
+                </div>
+
+                <!-- Footer tip / restart -->
+                <div class="mt-8 text-center">
+                    <button onclick="resetHideAndSeek()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-title px-6 py-2.5 rounded-2xl shadow-fun transition text-sm">
+                        <i class="fa-solid fa-rotate-right mr-1"></i> Esconder de Novo
+                    </button>
+                </div>
+            </div>
+
+            <!-- GAME 2: Jogo da Memória da Selva -->
+            <div id="game-memoria" class="hidden bg-white rounded-3xl p-6 border-4 border-purple-300 shadow-xl">
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+                    <div class="flex items-center gap-3">
+                        <div>
+                            <h3 class="font-title text-2xl text-purple-950 flex items-center gap-2">
+                                <span>🦁</span> Memória dos Bichinhos
+                            </h3>
+                            <p class="text-sm font-semibold text-slate-600">Encontra os pares dos animais que andavam assustados com o Cuquedo!</p>
+                        </div>
+                        <button onclick="speakText('Jogo da Memória! Toca nos cartões roxos para os virar e encontrar dois animais iguazinhos!')" class="bg-purple-600 hover:bg-purple-700 text-white p-2.5 rounded-2xl shadow-fun transition" title="Ouvir instrução">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="text-sm font-bold text-purple-800">
+                            Pares: <span id="memoryPairsFound" class="text-lg text-purple-600">0</span> / 6
+                        </div>
+                        <button onclick="initMemoryGame()" class="bg-purple-100 hover:bg-purple-200 text-purple-800 font-title px-4 py-2 rounded-2xl text-sm transition">
+                            <i class="fa-solid fa-arrows-rotate"></i> Baralhar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Memory grid -->
+                <div id="memoryGrid" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 gap-3 max-w-2xl mx-auto">
+                    <!-- Cards injected by JS -->
+                </div>
+            </div>
+
+            <!-- GAME 3: Jogo de Figura-Fundo com os Animais -->
+            <div id="game-figurafundo" class="hidden bg-gradient-to-b from-amber-50 to-orange-50 rounded-3xl p-6 border-4 border-amber-400 shadow-xl">
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                    <div>
+                        <h3 class="font-title text-2xl text-amber-950 flex items-center gap-2">
+                            <span>🔍</span> Jogo de Figura-Fundo
+                        </h3>
+                        <p class="text-sm font-semibold text-amber-900">Observa a silhueta misteriosa camuflada na selva. Qual é o animal?</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="bg-white/90 backdrop-blur px-4 py-2 rounded-2xl font-title text-amber-900 border border-amber-300 shadow-sm flex items-center gap-2">
+                            <span>Pontos:</span>
+                            <span id="ffScore" class="text-2xl text-amber-600">0</span>
+                        </div>
+                        <button onclick="speakText('Observa a sombra camuflada no bosque! Qual é o animal da história? Toca na resposta certa!')" class="bg-amber-500 hover:bg-amber-600 text-white p-2.5 rounded-2xl shadow-fun transition" title="Ouvir instrução">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Main Figure-Ground Visual Board -->
+                <div class="max-w-2xl mx-auto bg-white rounded-3xl p-4 sm:p-6 border-4 border-amber-200 shadow-md">
+                    <!-- The camouflaged backdrop with silhouette -->
+                    <div id="ffVisualStage" class="relative w-full h-64 sm:h-72 rounded-2xl overflow-hidden border-4 border-emerald-300 flex items-center justify-center select-none" style="background: repeating-linear-gradient(45deg, #dcfce7, #dcfce7 20px, #bbf7d0 20px, #bbf7d0 40px);">
+                        <!-- Jungle foliage texture camouflage -->
+                        <div class="absolute inset-0 opacity-25 pointer-events-none text-emerald-800 text-5xl flex flex-wrap justify-between p-2 select-none overflow-hidden">
+                            <span>🌿</span><span>🍃</span><span>🌾</span><span>🌿</span><span>🍃</span><span>🌾</span><span>🌿</span><span>🍃</span>
+                            <span>🍃</span><span>🌾</span><span>🌿</span><span>🍃</span><span>🌾</span><span>🌿</span><span>🍃</span><span>🌾</span>
+                        </div>
+                        <!-- Centered mystery silhouette/figure -->
+                        <div id="ffSilhouetteContainer" class="relative z-10 transition-all duration-300 transform scale-100 flex items-center justify-center">
+                            <!-- Injected by JS -->
+                        </div>
+                        <!-- Question badge -->
+                        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-bold text-emerald-900 shadow border border-emerald-200">
+                            Quem sou eu no bosque?
+                        </div>
+                    </div>
+
+                    <!-- Options Grid -->
+                    <div class="mt-6">
+                        <div class="text-xs font-bold text-amber-900 uppercase tracking-wider mb-2 text-center">Escolhe o animal correspondente:</div>
+                        <div id="ffOptionsGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                            <!-- Option buttons injected by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Next round button -->
+                    <div id="ffFeedbackBox" class="mt-4 p-3 rounded-2xl text-center hidden font-title text-sm transition-all duration-200">
+                        <span id="ffFeedbackMsg"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GAME 4: Cartões Didáticos dos Animais (com Perguntas V ou F Alternadas) -->
+            <div id="game-cartoes" class="hidden bg-white rounded-3xl p-6 border-4 border-rose-300 shadow-xl">
+                <!-- Header -->
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+                    <div>
+                        <h3 class="font-title text-2xl text-rose-950 flex items-center gap-2">
+                            <span>🎴</span> Cartões dos Animais da História
+                        </h3>
+                        <p class="text-sm font-semibold text-slate-600">Descobre as curiosidades de cada bicho e responde ao desafio de Verdadeiro ou Falso!</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="readCurrentAnimalCard()" class="bg-rose-500 hover:bg-rose-600 text-white font-title text-xs sm:text-sm px-4 py-2 rounded-2xl shadow-fun flex items-center gap-1.5 transition">
+                            <i class="fa-solid fa-volume-high"></i>
+                            <span>Ouvir Cartão</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Animal Selector Tabs / Chips -->
+                <div id="animalChipsContainer" class="flex items-center gap-2 overflow-x-auto pb-2 mb-6">
+                    <!-- Chip buttons injected by JS -->
+                </div>
+
+                <!-- The Interactive Animal Card -->
+                <div class="max-w-2xl mx-auto bg-gradient-to-b from-rose-50 to-amber-50 rounded-3xl p-6 border-4 border-rose-200 shadow-md">
+                    <div class="flex flex-col sm:flex-row items-center gap-6 mb-6">
+                        <!-- Animal Avatar Display -->
+                        <div id="cardAnimalAvatar" class="w-32 h-32 rounded-3xl bg-white border-4 border-rose-300 shadow-inner flex items-center justify-center p-3 flex-shrink-0">
+                            <!-- Injected by JS -->
+                        </div>
+                        <!-- Animal title and speech text -->
+                        <div class="text-center sm:text-left flex-1">
+                            <div class="inline-flex items-center gap-2 bg-rose-200 text-rose-900 text-xs font-bold px-3 py-1 rounded-full mb-2">
+                                <span id="cardAnimalTag">Amigo da Savana</span>
+                            </div>
+                            <h4 id="cardAnimalName" class="font-title text-2xl sm:text-3xl text-rose-950 mb-2">Girafa</h4>
+                            <p id="cardAnimalDesc" class="text-slate-700 text-sm sm:text-base font-semibold leading-relaxed">
+                                Descrição do animal...
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- True or False Quiz Section -->
+                    <div class="bg-white rounded-2xl p-5 border-2 border-rose-200 shadow-sm mt-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xl">🤔</span>
+                                <span class="font-title text-sm text-slate-800">Desafio: Verdadeiro ou Falso?</span>
+                            </div>
+                            <button onclick="nextAnimalQuestion()" class="text-xs text-rose-600 hover:text-rose-800 font-bold flex items-center gap-1 bg-rose-50 hover:bg-rose-100 px-3 py-1 rounded-xl transition">
+                                <i class="fa-solid fa-rotate"></i> Outra pergunta
+                            </button>
+                        </div>
+
+                        <!-- The alternating question prompt -->
+                        <div class="bg-amber-50/80 p-4 rounded-xl border border-amber-200 mb-4 min-h-[60px] flex items-center">
+                            <p id="cardQuestionText" class="font-title text-sm sm:text-base text-amber-950 leading-snug">
+                                Carregando pergunta...
+                            </p>
+                        </div>
+
+                        <!-- Buttons: Verdadeiro / Falso -->
+                        <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                            <button onclick="answerTrueFalse(true)" class="py-3 px-4 bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-white font-title text-base sm:text-lg rounded-2xl shadow-fun flex items-center justify-center gap-2 transition">
+                                <i class="fa-solid fa-circle-check text-xl"></i>
+                                <span>Verdadeiro</span>
+                            </button>
+                            <button onclick="answerTrueFalse(false)" class="py-3 px-4 bg-rose-500 hover:bg-rose-600 active:scale-95 text-white font-title text-base sm:text-lg rounded-2xl shadow-fun flex items-center justify-center gap-2 transition">
+                                <i class="fa-solid fa-circle-xmark text-xl"></i>
+                                <span>Falso</span>
+                            </button>
+                        </div>
+
+                        <!-- Quiz answer result banner -->
+                        <div id="cardQuizResult" class="mt-4 p-3 rounded-xl text-center hidden font-title text-sm transition-all duration-300">
+                        </div>
+                    </div>
+
+                    <!-- Bottom Nav between animals -->
+                    <div class="flex items-center justify-between mt-5 pt-3 border-t border-rose-200 text-xs">
+                        <button onclick="prevAnimalCard()" class="text-slate-600 hover:text-slate-900 font-bold flex items-center gap-1 bg-white px-3 py-1.5 rounded-xl border shadow-sm">
+                            <i class="fa-solid fa-arrow-left"></i> Anterior
+                        </button>
+                        <span id="cardCounterIndicator" class="font-title text-rose-800">1 / 6</span>
+                        <button onclick="nextAnimalCard()" class="text-slate-600 hover:text-slate-900 font-bold flex items-center gap-1 bg-white px-3 py-1.5 rounded-xl border shadow-sm">
+                            Seguinte <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GAME 5: Jogo de Classificar Plantas e Flores por Cores -->
+            <div id="game-cores" class="hidden bg-gradient-to-b from-emerald-50 via-white to-amber-50 rounded-3xl p-6 border-4 border-emerald-300 shadow-xl">
+                <!-- Header -->
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                    <div class="flex items-center gap-3">
+                        <div>
+                            <h3 class="font-title text-2xl text-emerald-950 flex items-center gap-2">
+                                <span>🌺</span> Separar Plantas e Flores por Cores
+                            </h3>
+                            <p class="text-sm font-semibold text-emerald-900">Ajuda a colher as plantas da floresta para o cesto da sua cor!</p>
+                        </div>
+                        <button onclick="speakText('Jogo das Plantas e Flores! Olha para a plantinha que está no centro e toca no cesto com a cor certa para a guardar!')" class="bg-emerald-500 hover:bg-emerald-600 text-white p-2.5 rounded-2xl shadow-fun transition" title="Ouvir instrução">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="bg-white/90 backdrop-blur px-4 py-2 rounded-2xl font-title text-emerald-900 border border-emerald-300 shadow-sm flex items-center gap-2">
+                            <span>Acertos:</span>
+                            <span id="colorSortScore" class="text-2xl text-amber-600">0</span>
+                        </div>
+                        <button onclick="resetColorGame()" class="bg-emerald-100 hover:bg-emerald-200 text-emerald-800 font-title px-4 py-2 rounded-2xl text-xs sm:text-sm transition">
+                            <i class="fa-solid fa-rotate-right"></i> Recomeçar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Plant / Flower Stage: The item to classify -->
+                <div class="max-w-2xl mx-auto bg-white rounded-3xl p-5 border-4 border-emerald-200 shadow-md text-center mb-6">
+                    <div class="inline-flex items-center gap-2 bg-emerald-100 text-emerald-900 px-3 py-1 rounded-full text-xs font-bold mb-3">
+                        <span>Qual é a cor desta plantinha da floresta?</span>
+                    </div>
+
+                    <!-- Main Plant Spotlight -->
+                    <div id="colorSortAnimalBox" class="w-36 h-36 sm:w-44 sm:h-44 mx-auto rounded-3xl bg-amber-50 border-4 border-emerald-300 shadow-inner flex flex-col items-center justify-center p-3 mb-2 animate-bounce">
+                        <!-- Plant avatar rendered by JS -->
+                    </div>
+
+                    <h4 id="colorSortAnimalName" class="font-title text-xl sm:text-2xl text-slate-800">Folha Verde</h4>
+                    <p id="colorSortAnimalHint" class="text-xs sm:text-sm text-slate-500 font-semibold mt-1">Toca no cesto da cor certa!</p>
+                </div>
+
+                <!-- Color Baskets / Buckets -->
+                <div class="max-w-3xl mx-auto">
+                    <div class="text-xs font-bold text-emerald-900 uppercase tracking-wider mb-3 text-center">Cestos das Cores da Floresta:</div>
+                    <div id="colorBasketsGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+                        <!-- Baskets injected by JS -->
+                    </div>
+                </div>
+
+                <!-- Feedback Toast / Banner -->
+                <div id="colorSortFeedback" class="mt-4 p-3 rounded-2xl text-center hidden font-title text-sm transition-all duration-300 max-w-md mx-auto"></div>
+            </div>
+
+            <!-- GAME 6: Jogo Simples de Matemática - Contar os Animais -->
+            <div id="game-contar" class="hidden bg-gradient-to-b from-sky-50 via-white to-amber-50 rounded-3xl p-6 border-4 border-sky-400 shadow-xl">
+                <!-- Header -->
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                    <div class="flex items-center gap-3">
+                        <div>
+                            <h3 class="font-title text-2xl text-sky-950 flex items-center gap-2">
+                                <span>🔢</span> Contar os Animais da História
+                            </h3>
+                            <p class="text-sm font-semibold text-sky-900">Quantos amigos estão no bosque? Conta com o teu dedinho!</p>
+                        </div>
+                        <button onclick="speakText('Jogo de contar! Olha para os animais no prado. Conta quantos são e toca no número certo!')" class="bg-sky-500 hover:bg-sky-600 text-white p-2.5 rounded-2xl shadow-fun transition" title="Ouvir instrução">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="bg-white/90 backdrop-blur px-4 py-2 rounded-2xl font-title text-sky-900 border border-sky-300 shadow-sm flex items-center gap-2">
+                            <span>Acertos:</span>
+                            <span id="mathScore" class="text-2xl text-amber-600">0</span>
+                        </div>
+                        <button onclick="resetMathGame()" class="bg-sky-100 hover:bg-sky-200 text-sky-800 font-title px-4 py-2 rounded-2xl text-xs sm:text-sm transition">
+                            <i class="fa-solid fa-rotate-right"></i> Recomeçar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Animals Counting Stage -->
+                <div class="max-w-2xl mx-auto bg-white rounded-3xl p-5 border-4 border-sky-200 shadow-md text-center mb-6">
+                    <div class="inline-flex items-center gap-2 bg-sky-100 text-sky-900 px-3 py-1 rounded-full text-xs font-bold mb-3">
+                        <span id="mathQuestionPrompt">Quantos amigos estão aqui?</span>
+                    </div>
+
+                    <!-- Animals Meadow -->
+                    <div id="mathAnimalsContainer" class="min-h-[140px] flex flex-wrap items-center justify-center gap-3 p-4 bg-emerald-50 rounded-2xl border-2 border-emerald-200">
+                        <!-- Populated by JS -->
+                    </div>
+
+                    <p class="text-xs sm:text-sm text-slate-500 font-semibold mt-2">Dica: Toca nos animais para contar 1, 2, 3...</p>
+                </div>
+
+                <!-- Number Buttons (1 to 5) -->
+                <div class="max-w-xl mx-auto">
+                    <div class="text-xs font-bold text-sky-900 uppercase tracking-wider mb-3 text-center">Toca no número correspondente:</div>
+                    <div id="mathNumbersGrid" class="grid grid-cols-5 gap-2 sm:gap-3">
+                        <!-- Buttons 1 to 5 injected by JS -->
+                    </div>
+                </div>
+
+                <!-- Feedback Toast -->
+                <div id="mathFeedback" class="mt-4 p-3 rounded-2xl text-center hidden font-title text-sm transition-all duration-300 max-w-md mx-auto"></div>
+            </div>
+        </section>
+
+        <!-- ======================= SECTION 4: MURAL DE TRABALHOS ======================= -->
+        <section id="view-mural" class="view-panel hidden transition-all duration-300">
+            <div class="corkboard rounded-3xl p-5 md:p-8 border-8 border-amber-800 shadow-2xl relative min-h-[550px]">
+                
+                <!-- Notice board banner -->
+                <div class="bg-white/95 rounded-2xl p-4 md:p-5 shadow-lg border-2 border-amber-300 flex flex-wrap items-center justify-between gap-4 mb-8">
+                    <div>
+                        <div class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-800 bg-amber-100 px-3 py-1 rounded-full mb-1">
+                            <i class="fa-solid fa-thumbtack text-rose-500"></i>
+                            <span>O Meu Portfólio Pré-Escolar</span>
+                        </div>
+                        <h2 class="font-title text-2xl md:text-3xl text-slate-800">O Grande Mural de Trabalhos</h2>
+                        <p class="text-xs md:text-sm text-slate-600 font-semibold">
+                            Anexa aqui as fotografias dos teus desenhos em papel, plasticinas ou salva os desenhos feitos no ecrã!
+                        </p>
+                    </div>
+
+                    <!-- Upload Action Button -->
+                    <div class="flex flex-wrap items-center gap-2">
+                        <button onclick="speakText('Este é o teu mural de trabalhos! Toca no botão cor-de-rosa para tirar uma fotografia ou anexar um desenho teu feito em papel!')" class="bg-amber-400 hover:bg-amber-500 text-amber-950 p-3 rounded-2xl shadow-fun transition" title="Ouvir explicação">
+                            <i class="fa-solid fa-volume-high text-lg"></i>
+                        </button>
+                        <label class="cursor-pointer bg-rose-500 hover:bg-rose-600 text-white font-title text-sm md:text-base px-5 py-3 rounded-2xl shadow-fun flex items-center gap-2 transition transform active:scale-95">
+                            <i class="fa-solid fa-camera text-lg"></i>
+                            <span>Anexar Trabalho (Foto / Ficheiro)</span>
+                            <input type="file" id="fileInput" accept="image/*" class="hidden" onchange="handleFileUpload(event)">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div id="galleryContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <!-- Cards will be populated here -->
+                </div>
+
+                <!-- Empty State Message (hidden if items exist) -->
+                <div id="emptyGalleryMessage" class="bg-white/90 backdrop-blur rounded-3xl p-8 text-center max-w-md mx-auto my-12 border-2 border-dashed border-amber-400">
+                    <span class="text-6xl mb-3 block">📌</span>
+                    <h3 class="font-title text-xl text-amber-950 mb-1">O mural ainda está vazio!</h3>
+                    <p class="text-sm text-slate-600 font-semibold mb-4">
+                        Pinta no ateliê e clica em "Guardar no Mural", ou tira uma fotografia ao teu trabalho em papel.
+                    </p>
+                    <button onclick="switchTab('pintura')" class="bg-amber-400 hover:bg-amber-500 text-amber-950 font-title px-5 py-2.5 rounded-2xl text-sm shadow-fun">
+                        Ir para o Ateliê
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Custom Modal for Saving Art (Title + Creator Name) -->
+    <div id="saveArtModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl p-6 max-w-sm w-full border-4 border-amber-300 shadow-2xl relative animate-scaleUp">
+            <button onclick="closeSaveModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-2xl font-bold">
+                &times;
+            </button>
+            <div class="text-center mb-4">
+                <span class="text-5xl">⭐</span>
+                <h3 class="font-title text-2xl text-amber-900 mt-2">Guardar no Meu Mural!</h3>
+                <p class="text-xs text-slate-600 font-semibold">Dá um nome ao teu desenho do Cuquedo</p>
+            </div>
+
+            <div class="space-y-3 mb-6">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Título do Trabalho:</label>
+                    <input type="text" id="artworkTitleInput" placeholder="Ex: O Cuquedo Peludo" class="w-full px-4 py-2.5 rounded-xl border-2 border-amber-200 focus:outline-none focus:border-amber-400 text-sm font-semibold">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Nome do Pequeno Artista:</label>
+                    <input type="text" id="artworkAuthorInput" placeholder="Ex: Martim, Francisca..." class="w-full px-4 py-2.5 rounded-xl border-2 border-amber-200 focus:outline-none focus:border-amber-400 text-sm font-semibold">
+                </div>
+            </div>
+
+            <div class="flex gap-2">
+                <button onclick="closeSaveModal()" class="flex-1 py-3 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-title text-sm">
+                    Voltar
+                </button>
+                <button onclick="confirmSaveToGallery()" class="flex-1 py-3 rounded-2xl bg-amber-400 hover:bg-amber-500 text-amber-950 font-title text-sm shadow-fun">
+                    Publicar! 📌
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Celebration / Notification Toast Modal (No native alert) -->
+    <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-emerald-600 text-white font-title text-base px-6 py-4 rounded-3xl shadow-2xl flex items-center gap-3 border-2 border-emerald-300">
+            <span id="toastIcon" class="text-2xl">🎉</span>
+            <span id="toastMessage">Muito bem! Trabalho adicionado!</span>
+        </div>
+    </div>
+
+    <!-- Viewer Modal for Enlarged Works in Gallery -->
+    <div id="viewImageModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl p-5 max-w-xl w-full border-4 border-amber-300 shadow-2xl relative flex flex-col">
+            <button onclick="closeImageViewer()" class="absolute top-3 right-4 text-slate-500 hover:text-slate-800 text-3xl font-bold z-10">
+                &times;
+            </button>
+            <div class="rounded-2xl overflow-hidden max-h-[60vh] bg-slate-100 flex items-center justify-center mb-3">
+                <img id="modalEnlargedImg" src="" alt="Trabalho" class="max-h-[58vh] w-auto object-contain">
+            </div>
+            <div class="flex items-center justify-between">
+                <div>
+                    <h4 id="modalArtworkTitle" class="font-title text-xl text-slate-900">Título</h4>
+                    <p id="modalArtworkAuthor" class="text-xs text-slate-500 font-semibold">Feito por: Aluno</p>
+                </div>
+                <button id="modalDownloadBtn" class="bg-emerald-500 hover:bg-emerald-600 text-white font-title px-4 py-2 rounded-xl text-xs flex items-center gap-2 shadow-fun">
+                    <i class="fa-solid fa-download"></i> Descarregar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-emerald-800 text-emerald-100 py-4 px-4 text-center text-xs border-t-4 border-emerald-900 mt-6">
+        <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+            <div class="font-semibold">
+                Inspirado no livro <strong>"O Cuquedo"</strong> (Clara Cunha & Paulo Galindro).
+            </div>
+            <div class="flex items-center space-x-2 text-emerald-300">
+                <span>Criado para o Jardim de Infância & Pré-Escolar</span>
+                <img id="footerCuquedoImg" class="w-5 h-5 object-contain inline-block" alt="O Cuquedo">
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* ==========================================================
+           AUDIO & VOICE ENGINE (Web Audio API & Web Speech)
+           ========================================================== */
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playTone(freq, type = 'sine', duration = 0.15, vol = 0.2) {
+            try {
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch (e) {
+                console.warn("Audio Context error", e);
+            }
+        }
+
+        // Fun sound presets
+        function soundClick() { playTone(440, 'triangle', 0.08, 0.15); }
+        function soundSuccess() {
+            playTone(523.25, 'sine', 0.1, 0.2);
+            setTimeout(() => playTone(659.25, 'sine', 0.15, 0.2), 100);
+            setTimeout(() => playTone(783.99, 'sine', 0.25, 0.25), 200);
+        }
+        function soundCuquedoJump() {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            try {
+                const now = audioCtx.currentTime;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(120, now);
+                osc.frequency.linearRampToValueAtTime(380, now + 0.2);
+                gain.gain.setValueAtTime(0.3, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(now + 0.35);
+            } catch(e){}
+        }
+
+        function playAnimalSound(type) {
+            if (type === 'girafa') {
+                speakText("A girafa estica o pescoço comprido e diz: Eu não vi o Cuquedo!");
+                playTone(600, 'sine', 0.3, 0.15);
+            } else if (type === 'elefante') {
+                speakText("O elefante trombeta: Fuumm! Quem anda aí a tremer as folhas?");
+                playTone(180, 'sawtooth', 0.4, 0.2);
+            } else if (type === 'hipopotamo') {
+                speakText("O hipopótamo dá um mergulho: Tchibum! Que susto!");
+                playTone(140, 'triangle', 0.5, 0.25);
+            } else if (type === 'cuquedo') {
+                soundCuquedoJump();
+                speakText("BUUUUUH! Sou eu, o Cuquedo! Mas não assusto ninguém, quero só brincar!");
+            }
+        }
+
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'pt-PT';
+                utterance.rate = 0.95; // Friendly cadence for young children
+                utterance.pitch = 1.15; // Cheerful voice
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function showToast(message, icon = '🎉') {
+            const toast = document.getElementById('toastNotification');
+            if (!toast) return;
+            const msgEl = document.getElementById('toastMessage');
+            const iconEl = document.getElementById('toastIcon');
+            if (msgEl) msgEl.textContent = message;
+            if (iconEl) iconEl.textContent = icon;
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            if (window._toastTimeout) clearTimeout(window._toastTimeout);
+            window._toastTimeout = setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 2500);
+        }
+
+        /* ==========================================================
+           STREAMING_CHUNK:Refining voice guidance for toddlers across views and games...
+           ========================================================== */
+        function switchTab(tabId) {
+            soundClick();
+            document.querySelectorAll('.view-panel').forEach(el => el.classList.add('hidden'));
+            const target = document.getElementById(`view-${tabId}`);
+            if (target) target.classList.remove('hidden');
+
+            // Reset navigation button active styling
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.className = "nav-btn bg-white hover:bg-slate-100 text-slate-700 font-title py-2 px-1 rounded-2xl shadow-fun transition text-xs sm:text-sm md:text-base flex flex-col sm:flex-row items-center justify-center gap-1.5 border-2 border-slate-200";
+            });
+
+            const activeBtn = document.getElementById(`nav-${tabId}`);
+            if (activeBtn) {
+                if (tabId === 'inicio') activeBtn.className = "nav-btn bg-emerald-500 text-white font-title py-2 px-1 rounded-2xl shadow-fun transition text-xs sm:text-sm md:text-base flex flex-col sm:flex-row items-center justify-center gap-1.5";
+                if (tabId === 'pintura') activeBtn.className = "nav-btn bg-amber-400 text-amber-950 font-title py-2 px-1 rounded-2xl shadow-fun transition text-xs sm:text-sm md:text-base flex flex-col sm:flex-row items-center justify-center gap-1.5";
+                if (tabId === 'jogos') activeBtn.className = "nav-btn bg-purple-500 text-white font-title py-2 px-1 rounded-2xl shadow-fun transition text-xs sm:text-sm md:text-base flex flex-col sm:flex-row items-center justify-center gap-1.5";
+                if (tabId === 'mural') activeBtn.className = "nav-btn bg-rose-500 text-white font-title py-2 px-1 rounded-2xl shadow-fun transition text-xs sm:text-sm md:text-base flex flex-col sm:flex-row items-center justify-center gap-1.5";
+            }
+
+            // Read aloud section title and full explanation for toddlers
+            if (tabId === 'inicio') {
+                speakText("Olá amiguinho! Bem-vindo ao mundo do Cuquedo! Toca num botão lá em cima para pintar, jogar ou ver o teu mural!");
+            } else if (tabId === 'pintura') {
+                setTimeout(resizeCanvas, 50);
+                speakText("Ateliê de pintura! Escolhe uma cor e desenha com o dedinho na tela branca! Também podes pôr carimbos e salvar no teu mural!");
+            } else if (tabId === 'jogos') {
+                speakText("Área de jogos! Vamos brincar às escondidas com o Cuquedo! Toca nos arbustos para o encontrar!");
+            } else if (tabId === 'mural') {
+                speakText("Este é o teu mural de trabalhos! Podes anexar fotografias reais dos teus desenhos em papel ou ver o que já pintaste!");
+                renderGallery();
+            }
+        }
+
+        /* ==========================================================
+           STREAMING_CHUNK:Implementing the interactive drawing canvas engine...
+           ========================================================== */
+        const canvas = document.getElementById('paintCanvas');
+        const ctx = canvas.getContext('2d');
+        let isDrawing = false;
+        let currentColor = '#22c55e';
+        let currentBrushSize = 14;
+        let currentTool = 'brush'; // 'brush', 'eraser', 'stamp'
+        let currentStamp = '🐾';
+
+        function resizeCanvas() {
+            const container = canvas.parentElement;
+            if (!container) return;
+            const rect = container.getBoundingClientRect();
+            
+            // Backup content
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = canvas.width;
+            tempCanvas.height = canvas.height;
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCtx.drawImage(canvas, 0, 0);
+
+            canvas.width = rect.width || 700;
+            canvas.height = 440;
+
+            // Fill white background
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Restore content
+            if (tempCanvas.width > 0 && tempCanvas.height > 0) {
+                ctx.drawImage(tempCanvas, 0, 0, canvas.width, canvas.height);
+            }
+        }
+
+        function getCanvasCoords(e) {
+            const rect = canvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            return {
+                x: (clientX - rect.left) * (canvas.width / rect.width),
+                y: (clientY - rect.top) * (canvas.height / rect.height)
+            };
+        }
+
+        function startPainting(e) {
+            e.preventDefault();
+            isDrawing = true;
+            const { x, y } = getCanvasCoords(e);
+
+            if (currentTool === 'stamp') {
+                drawStamp(x, y);
+                isDrawing = false;
+                return;
+            }
+
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.strokeStyle = (currentTool === 'eraser') ? '#ffffff' : currentColor;
+            ctx.lineWidth = currentBrushSize;
+
+            // Small dot on single tap
+            ctx.lineTo(x, y);
+            ctx.stroke();
+        }
+
+        function paint(e) {
+            if (!isDrawing || currentTool === 'stamp') return;
+            e.preventDefault();
+            const { x, y } = getCanvasCoords(e);
+            ctx.lineTo(x, y);
+            ctx.stroke();
+        }
+
+        function stopPainting() {
+            if (isDrawing) {
+                ctx.closePath();
+                isDrawing = false;
+            }
+        }
+
+        function drawStamp(x, y) {
+            soundCuquedoJump();
+            ctx.font = `${currentBrushSize * 3 + 24}px serif`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(currentStamp, x, y);
+            showToast(`Carimbo ${currentStamp} colocado!`, '🎨');
+        }
+
+        canvas.addEventListener('mousedown', startPainting);
+        canvas.addEventListener('mousemove', paint);
+        window.addEventListener('mouseup', stopPainting);
+
+        canvas.addEventListener('touchstart', startPainting, { passive: false });
+        canvas.addEventListener('touchmove', paint, { passive: false });
+        window.addEventListener('touchend', stopPainting);
+
+        function setColor(hex) {
+            currentColor = hex;
+            setTool('brush');
+            document.querySelectorAll('#colors-box button').forEach(b => b.classList.remove('ring-2', 'ring-emerald-600'));
+            event.target.classList.add('ring-2', 'ring-emerald-600');
+            soundClick();
+        }
+
+        function setBrushSize(size, elem) {
+            currentBrushSize = size;
+            document.querySelectorAll('.size-btn').forEach(b => {
+                b.className = "size-btn rounded-full flex items-center justify-center bg-amber-100 hover:bg-amber-200";
+            });
+            elem.className = "size-btn rounded-full flex items-center justify-center bg-amber-400 border-2 border-amber-600";
+            soundClick();
+        }
+
+        function setTool(tool) {
+            currentTool = tool;
+            soundClick();
+            document.querySelectorAll('.tool-btn').forEach(b => {
+                b.className = "tool-btn bg-white text-slate-700 p-2.5 rounded-xl font-title text-xs flex flex-col items-center justify-center gap-1 shadow-sm border";
+            });
+            const active = document.getElementById(`tool-${tool}`);
+            if (active) {
+                active.className = "tool-btn bg-amber-400 text-amber-950 p-2.5 rounded-xl font-title text-xs flex flex-col items-center justify-center gap-1 shadow-sm";
+            }
+
+            const stampsBox = document.getElementById('stamps-box');
+            if (tool === 'stamp') {
+                stampsBox.classList.remove('hidden');
+            } else {
+                stampsBox.classList.add('hidden');
+            }
+        }
+
+        function selectStamp(emoji) {
+            currentStamp = emoji;
+            soundClick();
+            document.querySelectorAll('.stamp-opt').forEach(el => el.classList.remove('bg-amber-200', 'font-bold'));
+            event.target.classList.add('bg-amber-200', 'font-bold');
+            showToast(`Carimbo ${emoji} selecionado! Toca na tela!`, '✨');
+        }
+
+        function clearCanvas() {
+            soundClick();
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            showToast('Quadro limpo para um novo desenho!', '✨');
+        }
+
+        function downloadCanvasImage() {
+            soundSuccess();
+            const link = document.createElement('a');
+            link.download = `O_Meu_Cuquedo_${Date.now()}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+            showToast('Desenho descarregado com sucesso!', '📥');
+        }
+
+        /* ==========================================================
+           STREAMING_CHUNK:Managing gallery persistence and image sources...
+           ========================================================== */
+        // Direct link to the shared Google Drive image with thumbnail fallback and SVG fallback
+        const CUQUEDO_DRIVE_IMG = "https://lh3.googleusercontent.com/d/1cjUEU5X1aCrryEmwvw86XRfA_5LR10s-";
+        const CUQUEDO_FALLBACK_THUMB = "https://drive.google.com/thumbnail?id=1cjUEU5X1aCrryEmwvw86XRfA_5LR10s-&sz=w1000";
+
+        // Authentic Cuquedo SVG illustration fallback
+        const CUQUEDO_REAL_IMG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 520" width="100%" height="100%"><rect width="500" height="520" fill="white"/><g fill="none" stroke="%23111827" stroke-linecap="round" stroke-linejoin="round"><!-- Legs --><path d="M 230 380 Q 200 440 180 500" stroke-width="5"/><path d="M 180 500 L 155 515 M 180 500 L 165 520 M 180 500 L 195 515" stroke-width="4"/><path d="M 330 380 Q 345 440 355 500" stroke-width="5"/><path d="M 355 500 L 335 512 M 355 500 L 350 518 M 355 500 L 370 510" stroke-width="4"/><!-- Left Arm --><path d="M 195 240 Q 140 220 90 205" stroke-width="4.5"/><circle cx="88" cy="204" r="5" fill="%23111827"/><path d="M 88 204 L 55 190 M 88 204 L 65 215 M 88 204 L 60 230" stroke-width="3.5"/><!-- Right Arm --><path d="M 350 240 Q 395 250 385 300 Q 380 340 405 355" stroke-width="4.5"/><circle cx="405" cy="355" r="5" fill="%23111827"/><path d="M 405 355 L 435 365 M 405 355 L 438 385 M 405 355 L 415 395" stroke-width="3.5"/><!-- Wild top hair stands --><path d="M 260 160 Q 260 70 255 15" stroke-width="3"/><path d="M 230 170 Q 210 110 220 40 Q 225 35 220 38" stroke-width="3"/><path d="M 290 170 Q 320 100 350 60" stroke-width="3"/><path d="M 310 180 Q 340 120 355 95" stroke-width="3"/><!-- Dense Scribble Body Texture --><path d="M 250 160 C 180 160 150 210 150 270 C 150 340 190 390 270 390 C 350 390 380 340 380 270 C 380 200 320 160 250 160 Z" fill="%23111827"/><g stroke="%23111827" stroke-width="3.5"><path d="M 140 250 Q 110 270 130 320 Q 150 370 200 395 Q 260 420 330 390 Q 390 370 410 310 Q 420 250 370 220 Q 350 180 310 150 Q 240 130 190 170 Q 140 200 140 250 Z"/><path d="M 120 290 Q 150 370 240 390 Q 330 400 370 360 Q 410 320 380 250 Q 360 170 270 145 Q 180 150 135 230 Q 120 280 160 350"/><path d="M 160 170 Q 200 130 280 140 Q 360 150 380 210 Q 400 270 380 340 Q 350 390 270 400 Q 180 400 140 330 Q 120 270 160 210"/><path d="M 210 160 Q 280 110 320 170 Q 370 210 390 270 Q 390 340 340 380 Q 270 410 200 380 Q 140 340 150 270 Q 160 200 230 170"/><path d="M 170 320 Q 120 330 160 380 Q 200 420 290 410 Q 370 400 400 330 Q 400 280 370 260"/></g><!-- Giant surprised expressive eyes --><ellipse cx="230" cy="255" rx="25" ry="22" fill="%23ffffff" stroke="%23111827" stroke-width="4"/><ellipse cx="270" cy="255" rx="17" ry="17" fill="%23ffffff" stroke="%23111827" stroke-width="4"/><!-- Pupils looking at each other --><circle cx="240" cy="253" r="5.5" fill="%23111827"/><circle cx="260" cy="253" r="5.5" fill="%23111827"/><!-- Wide toothy grin --><path d="M 215 330 Q 270 348 325 305 Q 270 330 215 330 Z" fill="%23ffffff" stroke="%23111827" stroke-width="3.5"/><path d="M 225 330 L 225 333 M 235 331 L 235 335 M 245 332 L 245 337 M 255 333 L 255 338 M 265 332 L 265 338 M 275 330 L 275 337 M 285 327 L 285 334 M 295 323 L 295 330 M 305 318 L 305 325 M 315 312 L 315 320" stroke="%23111827" stroke-width="2.5"/></svg>`;
+
+        function setSafeCuquedoImage(imgElement) {
+            if (!imgElement) return;
+            imgElement.src = CUQUEDO_DRIVE_IMG;
+            imgElement.onerror = function() {
+                if (this.src === CUQUEDO_DRIVE_IMG) {
+                    this.src = CUQUEDO_FALLBACK_THUMB;
+                } else if (this.src === CUQUEDO_FALLBACK_THUMB) {
+                    this.src = CUQUEDO_REAL_IMG;
+                    this.onerror = null;
+                }
+            };
+        }
+
+        // Default initial items in the portfolio with user's Cuquedo artwork featured
+        let galleryItems = [
+            {
+                id: 'cuquedo-original',
+                title: 'O Meu Cuquedo Peludo!',
+                author: 'Trabalho do Livro',
+                date: 'Em Exibição',
+                type: 'Desenho Anexado',
+                dataUrl: CUQUEDO_DRIVE_IMG,
+                featured: true
+            },
+            {
+                id: 'init-1',
+                title: 'O Cuquedo na Selva',
+                author: 'Joana (5 anos)',
+                date: 'Sala dos 5 Anos',
+                type: 'Pintura Digital',
+                dataUrl: generateCuquedoDefaultSVG()
+            }
+        ];
+
+        function renderGallery() {
+            const container = document.getElementById('galleryContainer');
+            const emptyMsg = document.getElementById('emptyGalleryMessage');
+
+            if (galleryItems.length === 0) {
+                container.innerHTML = '';
+                emptyMsg.classList.remove('hidden');
+                return;
+            }
+
+            emptyMsg.classList.add('hidden');
+            container.innerHTML = galleryItems.map((item, index) => `
+                <div class="bg-white rounded-2xl p-4 shadow-xl border-4 ${item.featured ? 'border-amber-400 ring-4 ring-amber-200' : 'border-amber-200'} transform hover:scale-102 transition flex flex-col justify-between relative group">
+                    <!-- Pin decoration / badge -->
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full ${item.featured ? 'bg-amber-500' : 'bg-rose-500'} border-2 border-white shadow-md flex items-center justify-center text-white text-xs z-10">
+                        <i class="fa-solid ${item.featured ? 'fa-star text-sm' : 'fa-thumbtack'}"></i>
+                    </div>
+
+                    <div>
+                        <!-- Polaroid style container -->
+                        <div class="rounded-xl overflow-hidden aspect-square bg-slate-50 flex items-center justify-center cursor-pointer mb-3 border-2 border-slate-100 p-2 shadow-inner" onclick="openImageViewer(${index})">
+                            <img src="${item.dataUrl}" alt="${item.title}" class="w-full h-full object-contain group-hover:scale-105 transition duration-300" onerror="this.src='${CUQUEDO_REAL_IMG}'; this.onerror=null;">
+                        </div>
+                        <h4 class="font-title text-base md:text-lg text-slate-800 truncate">${item.title}</h4>
+                        <div class="flex items-center justify-between text-xs text-slate-500 font-semibold mt-1">
+                            <span>👤 ${item.author}</span>
+                            <span class="bg-amber-100 text-amber-900 px-2.5 py-0.5 rounded-full font-bold">${item.type}</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-2 border-t border-slate-100 flex items-center justify-between gap-1">
+                        <button onclick="openImageViewer(${index})" class="text-xs bg-sky-100 hover:bg-sky-200 text-sky-800 font-bold px-3 py-1.5 rounded-xl flex items-center gap-1 transition">
+                            <i class="fa-solid fa-eye"></i> Abrir
+                        </button>
+                        <button onclick="removeGalleryItem('${item.id}')" class="text-xs text-rose-500 hover:text-rose-700 font-semibold px-2 py-1 rounded">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function loadCuquedoColoringOutline() {
+            soundSuccess();
+            const img = new Image();
+            img.crossOrigin = "anonymous";
+            img.onload = function() {
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                const scale = Math.min((canvas.width * 0.8) / img.width, (canvas.height * 0.8) / img.height);
+                const w = img.width * scale;
+                const h = img.height * scale;
+                const x = (canvas.width - w) / 2;
+                const y = (canvas.height - h) / 2;
+                ctx.drawImage(img, x, y, w, h);
+                showToast('O Cuquedo está na tela! Agora podes colorir e pintar à volta!', '🎨');
+                speakText("O Cuquedo apareceu no teu ecrã! Vamos dar-lhe cores bonitas!");
+            };
+            img.onerror = function() {
+                img.src = CUQUEDO_REAL_IMG;
+            };
+            img.src = CUQUEDO_DRIVE_IMG;
+        }
+
+        function generateCuquedoDefaultSVG() {
+            return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="400" height="300" fill="%23dcfce7"/><circle cx="200" cy="160" r="90" fill="%233e2723"/><circle cx="160" cy="130" r="22" fill="%23ffffff"/><circle cx="240" cy="130" r="22" fill="%23ffffff"/><circle cx="165" cy="130" r="12" fill="%23000000"/><circle cx="245" cy="130" r="12" fill="%23000000"/><path d="M 180 180 Q 200 195 220 180" stroke="%23ffffff" stroke-width="6" fill="none" stroke-linecap="round"/><text x="200" y="270" font-size="20" font-family="sans-serif" font-weight="bold" fill="%23166534" text-anchor="middle">O Cuquedo Amigo!</text></svg>`;
+        }
+
+        function saveCanvasToGalleryModal() {
+            soundClick();
+            document.getElementById('artworkTitleInput').value = "O Meu Cuquedo";
+            document.getElementById('artworkAuthorInput').value = "";
+            document.getElementById('saveArtModal').classList.remove('hidden');
+        }
+
+        function closeSaveModal() {
+            document.getElementById('saveArtModal').classList.add('hidden');
+        }
+
+        function confirmSaveToGallery() {
+            const title = document.getElementById('artworkTitleInput').value.trim() || "Trabalho do Cuquedo";
+            const author = document.getElementById('artworkAuthorInput').value.trim() || "Pequeno Artista";
+            const dataUrl = canvas.toDataURL('image/png');
+
+            const newItem = {
+                id: 'work-' + Date.now(),
+                title: title,
+                author: author,
+                date: new Date().toLocaleDateString('pt-PT'),
+                type: 'Pintura no Ateliê',
+                dataUrl: dataUrl
+            };
+
+            galleryItems.unshift(newItem);
+            renderGallery();
+            closeSaveModal();
+            soundSuccess();
+            showToast('Que lindo! O teu trabalho já está no mural!', '🏆');
+            speakText(`Parabéns ${author}! O teu trabalho foi afixado no grande mural!`);
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const base64Img = e.target.result;
+                const newItem = {
+                    id: 'upload-' + Date.now(),
+                    title: 'Trabalho Manual / Fotografia',
+                    author: 'Pequeno Criador',
+                    date: new Date().toLocaleDateString('pt-PT'),
+                    type: 'Fotografia Anexada',
+                    dataUrl: base64Img
+                };
+                galleryItems.unshift(newItem);
+                renderGallery();
+                soundSuccess();
+                showToast('Foto do teu trabalho anexada com sucesso!', '📸');
+                speakText('Fantástico! Anexaste a fotografia do teu trabalho ao mural!');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function removeGalleryItem(id) {
+            galleryItems = galleryItems.filter(item => item.id !== id);
+            soundClick();
+            renderGallery();
+            showToast('Trabalho removido do mural.', '🗑️');
+        }
+
+        function openImageViewer(index) {
+            const item = galleryItems[index];
+            if (!item) return;
+
+            document.getElementById('modalEnlargedImg').src = item.dataUrl;
+            document.getElementById('modalArtworkTitle').textContent = item.title;
+            document.getElementById('modalArtworkAuthor').textContent = `Artista: ${item.author} • ${item.date}`;
+            
+            const dlBtn = document.getElementById('modalDownloadBtn');
+            dlBtn.onclick = () => {
+                const link = document.createElement('a');
+                link.download = `${item.title.replace(/\s+/g, '_')}.png`;
+                link.href = item.dataUrl;
+                link.click();
+            };
+
+            document.getElementById('viewImageModal').classList.remove('hidden');
+            soundClick();
+        }
+
+        function closeImageViewer() {
+            document.getElementById('viewImageModal').classList.add('hidden');
+        }
+
+        /* ==========================================================
+           STREAMING_CHUNK:Implementing games logic and interactions...
+           ========================================================== */
+        // Game 1: Hide and Seek
+        let hideSeekScore = 0;
+        const animalsList = [
+            { name: "Girafa", emoji: "🦒", quote: "Olha para mim lá no alto!" },
+            { name: "Elefante", emoji: "🐘", quote: "Ouvi um barulho na erva!" },
+            { name: "Hipopótamo", emoji: "🦛", quote: "Vou esconder-me na água!" },
+            { name: "Zebra", emoji: "🦓", quote: "Onde estão as minhas riscas?" },
+            { name: "Leão", emoji: "🦁", quote: "Quem é o rei do bosque?" },
+            { name: "Macaco", emoji: "🐒", quote: "Uuu-aa-aa! Fugi para a árvore!" }
+        ];
+
+        function startHideAndSeek() {
+            switchTab('jogos');
+            toggleGameSubMode('esconde');
+        }
+
+        function resetHideAndSeek() {
+            soundClick();
+            const grid = document.getElementById('bushesGrid');
+            grid.innerHTML = '';
+
+            // Pick one lucky spot for the Cuquedo among 8 bushes
+            const cuquedoIndex = Math.floor(Math.random() * 8);
+
+            for (let i = 0; i < 8; i++) {
+                const isCuquedo = (i === cuquedoIndex);
+                const randomAnimal = animalsList[Math.floor(Math.random() * animalsList.length)];
+
+                const bushBtn = document.createElement('div');
+                bushBtn.className = "bg-emerald-600 hover:bg-emerald-500 rounded-3xl p-6 border-4 border-emerald-400 shadow-fun text-center cursor-pointer transition transform active:scale-95 flex flex-col items-center justify-center min-h-[140px] relative overflow-hidden group";
+                
+                bushBtn.innerHTML = `
+                    <div class="bush-cover flex flex-col items-center">
+                        <span class="text-5xl group-hover:scale-110 transition duration-200">🌿</span>
+                        <span class="font-title text-sm text-emerald-100 mt-2">Arbusto ${i+1}</span>
+                    </div>
+                `;
+
+                bushBtn.onclick = function() {
+                    if (bushBtn.dataset.revealed) return;
+                    bushBtn.dataset.revealed = "true";
+
+                    if (isCuquedo) {
+                        soundCuquedoJump();
+                        hideSeekScore += 5;
+                        document.getElementById('hideSeekScore').textContent = hideSeekScore;
+                        bushBtn.className = "bg-amber-900 rounded-3xl p-6 border-4 border-amber-500 shadow-xl text-center flex flex-col items-center justify-center min-h-[140px] animate-bounce";
+                        bushBtn.innerHTML = `
+                            <img src="${CUQUEDO_DRIVE_IMG}" class="w-16 h-16 object-contain" alt="O Cuquedo" onerror="this.src='${CUQUEDO_REAL_IMG}'; this.onerror=null;">
+                            <span class="font-title text-base text-amber-200 mt-1">É O CUQUEDO!</span>
+                            <span class="text-xs text-white font-bold">BUUUH! (+5)</span>
+                        `;
+                        speakText("Achaste o Cuquedo! BUUUH! Que divertido!");
+                        showToast('Encontraste o Cuquedo! 🎉', '⭐');
+                    } else {
+                        soundClick();
+                        hideSeekScore += 1;
+                        document.getElementById('hideSeekScore').textContent = hideSeekScore;
+                        bushBtn.className = "bg-white rounded-3xl p-6 border-4 border-emerald-300 shadow-md text-center flex flex-col items-center justify-center min-h-[140px]";
+                        bushBtn.innerHTML = `
+                            <span class="text-4xl">${randomAnimal.emoji}</span>
+                            <span class="font-title text-sm text-slate-800 mt-1">${randomAnimal.name}</span>
+                            <span class="text-xs text-emerald-600 font-semibold">${randomAnimal.quote}</span>
+                        `;
+                    }
+                };
+
+                grid.appendChild(bushBtn);
+            }
+        }
+
+        let memoryCards = [];
+        let flippedCards = [];
+        let matchedPairs = 0;
+        let memoryLock = false;
+
+        const memoryAnimals = [
+            { id: 'cuquedo', name: 'Cuquedo', isImage: true },
+            { id: 'girafa', name: 'Girafa', emoji: '🦒' },
+            { id: 'elefante', name: 'Elefante', emoji: '🐘' },
+            { id: 'hipopotamo', name: 'Hipopótamo', emoji: '🦛' },
+            { id: 'zebra', name: 'Zebra', emoji: '🦓' },
+            { id: 'leao', name: 'Leão', emoji: '🦁' }
+        ];
+
+        function initMemoryGame() {
+            soundClick();
+            matchedPairs = 0;
+            flippedCards = [];
+            memoryLock = false;
+            const counter = document.getElementById('memoryPairsFound');
+            if (counter) counter.textContent = '0';
+
+            const deck = [...memoryAnimals, ...memoryAnimals]
+                .map((item, idx) => ({ ...item, uniqueId: idx }))
+                .sort(() => Math.random() - 0.5);
+
+            const grid = document.getElementById('memoryGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            deck.forEach(card => {
+                const cardEl = document.createElement('div');
+                cardEl.className = "aspect-square bg-purple-500 hover:bg-purple-600 rounded-2xl cursor-pointer shadow-fun border-4 border-purple-300 flex items-center justify-center p-2 text-white font-title text-3xl transition-transform duration-300 active:scale-95";
+                cardEl.innerHTML = `<span class="card-back text-2xl sm:text-3xl">❓</span>`;
+                cardEl.dataset.uniqueId = card.uniqueId;
+                cardEl.dataset.id = card.id;
+
+                cardEl.onclick = () => flipMemoryCard(cardEl, card);
+                grid.appendChild(cardEl);
+            });
+        }
+
+        function flipMemoryCard(cardEl, card) {
+            if (memoryLock || cardEl.dataset.matched === 'true' || flippedCards.includes(cardEl)) return;
+
+            soundClick();
+            cardEl.className = "aspect-square bg-white rounded-2xl shadow-fun border-4 border-purple-400 flex flex-col items-center justify-center p-2 transition-transform duration-300 scale-105";
+            if (card.isImage) {
+                cardEl.innerHTML = `<img src="${CUQUEDO_DRIVE_IMG}" class="w-12 h-12 sm:w-16 sm:h-16 object-contain" alt="Cuquedo" onerror="this.src='${CUQUEDO_REAL_IMG}'; this.onerror=null;">`;
+            } else {
+                cardEl.innerHTML = `<span class="text-4xl sm:text-5xl">${card.emoji}</span><span class="font-title text-[10px] sm:text-xs text-purple-900 mt-1">${card.name}</span>`;
+            }
+
+            flippedCards.push(cardEl);
+
+            if (flippedCards.length === 2) {
+                memoryLock = true;
+                const [c1, c2] = flippedCards;
+                if (c1.dataset.id === c2.dataset.id) {
+                    soundSuccess();
+                    c1.dataset.matched = 'true';
+                    c2.dataset.matched = 'true';
+                    c1.classList.add('ring-4', 'ring-emerald-400');
+                    c2.classList.add('ring-4', 'ring-emerald-400');
+                    matchedPairs++;
+                    const counter = document.getElementById('memoryPairsFound');
+                    if (counter) counter.textContent = matchedPairs;
+                    flippedCards = [];
+                    memoryLock = false;
+
+                    if (matchedPairs === 6) {
+                        setTimeout(() => {
+                            soundSuccess();
+                            showToast('Encontraste todos os pares! Parabéns! 🎉', '🏆');
+                            speakText('Parabéns! Encontraste todos os pares dos bichinhos da história!');
+                        }, 400);
+                    }
+                } else {
+                    setTimeout(() => {
+                        c1.className = "aspect-square bg-purple-500 hover:bg-purple-600 rounded-2xl cursor-pointer shadow-fun border-4 border-purple-300 flex items-center justify-center p-2 text-white font-title text-3xl transition-transform duration-300 active:scale-95";
+                        c1.innerHTML = `<span class="card-back text-2xl sm:text-3xl">❓</span>`;
+                        c2.className = "aspect-square bg-purple-500 hover:bg-purple-600 rounded-2xl cursor-pointer shadow-fun border-4 border-purple-300 flex items-center justify-center p-2 text-white font-title text-3xl transition-transform duration-300 active:scale-95";
+                        c2.innerHTML = `<span class="card-back text-2xl sm:text-3xl">❓</span>`;
+                        flippedCards = [];
+                        memoryLock = false;
+                    }, 900);
+                }
+            }
+        }
+
+        function toggleGameSubMode(mode) {
+            soundClick();
+            document.getElementById('game-esconde').classList.add('hidden');
+            document.getElementById('game-memoria').classList.add('hidden');
+            document.getElementById('game-figurafundo').classList.add('hidden');
+            document.getElementById('game-cartoes').classList.add('hidden');
+            const gameCores = document.getElementById('game-cores');
+            if (gameCores) gameCores.classList.add('hidden');
+            const gameContar = document.getElementById('game-contar');
+            if (gameContar) gameContar.classList.add('hidden');
+
+            const defaultBtnClass = "px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl font-title text-sm sm:text-base bg-white text-slate-700 border-2 border-slate-200 shadow-fun flex items-center gap-2";
+            document.getElementById('btnSubEsconde').className = defaultBtnClass;
+            document.getElementById('btnSubMemoria').className = defaultBtnClass;
+            document.getElementById('btnSubFiguraFundo').className = defaultBtnClass;
+            document.getElementById('btnSubCartoes').className = defaultBtnClass;
+            const btnSubCores = document.getElementById('btnSubCores');
+            if (btnSubCores) btnSubCores.className = defaultBtnClass;
+            const btnSubContar = document.getElementById('btnSubContar');
+            if (btnSubContar) btnSubContar.className = defaultBtnClass;
+
+            if (mode === 'esconde') {
+                document.getElementById('game-esconde').classList.remove('hidden');
+                document.getElementById('btnSubEsconde').className = "px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl font-title text-sm sm:text-base bg-emerald-500 text-white shadow-fun flex items-center gap-2";
+                speakText("Onde está o Cuquedo? Toca nos arbustos com o teu dedinho para ver se o encontras escondido!");
+            } else if (mode === 'memoria') {
+                document.getElementById('game-memoria').classList.remove('hidden');
+                document.getElementById('btnSubMemoria').className = "px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl font-title text-sm sm:text-base bg-purple-600 text-white shadow-fun flex items-center gap-2";
+                speakText("Jogo da memória! Toca nos cartões roxos para virares dois bichinhos iguazinhos!");
+                initMemoryGame();
+            } else if (mode === 'figurafundo') {
+                document.getElementById('game-figurafundo').classList.remove('hidden');
+                document.getElementById('btnSubFiguraFundo').className = "px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl font-title text-sm sm:text-base bg-amber-500 text-white shadow-fun flex items-center gap-2";
+                speakText("Jogo de Figura-Fundo! Olha bem para a sombra misteriosa no bosque e escolhe o animal certo!");
+                initFiguraFundoGame();
+            } else if (mode === 'cartoes') {
+                document.getElementById('game-cartoes').classList.remove('hidden');
+                document.getElementById('btnSubCartoes').className = "px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl font-title text-sm sm:text-base bg-rose-500 text-white shadow-fun flex items-center gap-2";
+                speakText("Cartões dos animais! Ouve a história de cada bicho e responde se é verdadeiro ou falso!");
+                initAnimalCards();
+            } else if (mode === 'cores') {
+                if (gameCores) gameCores.classList.remove('hidden');
+                if (btnSubCores) btnSubCores.className = "px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl font-title text-sm sm:text-base bg-emerald-500 text-white shadow-fun flex items-center gap-2";
+                speakText("Jogo das Plantas e Flores! Olha para a plantinha e toca no cesto com a cor certa para a guardar!");
+                initColorSortGame();
+            } else if (mode === 'contar') {
+                if (gameContar) gameContar.classList.remove('hidden');
+                if (btnSubContar) btnSubContar.className = "px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl font-title text-sm sm:text-base bg-sky-500 text-white shadow-fun flex items-center gap-2";
+                speakText("Jogo de contar! Conta quantos amigos estão no bosque e toca no número certo!");
+                initMathGame();
+            }
+        }
+
+        /* ==========================================================
+           STREAMING_CHUNK:Implementing Simple Preschool Math Game with the story animals...
+           ========================================================== */
+        let mathScore = 0;
+        let currentMathTargetCount = 1;
+        let currentMathAnimal = null;
+
+        const mathAnimals = [
+            { id: 'girafa', name: 'Girafas', singular: 'Girafa', emoji: '🦒' },
+            { id: 'elefante', name: 'Elefantes', singular: 'Elefante', emoji: '🐘' },
+            { id: 'hipopotamo', name: 'Hipopótamos', singular: 'Hipopótamo', emoji: '🦛' },
+            { id: 'zebra', name: 'Zebras', singular: 'Zebra', emoji: '🦓' },
+            { id: 'leao', name: 'Leões', singular: 'Leão', emoji: '🦁' },
+            { id: 'cuquedo', name: 'Cuquedos', singular: 'Cuquedo', isImage: true }
+        ];
+
+        function initMathGame() {
+            renderMathNumberButtons();
+            nextMathRound();
+        }
+
+        function resetMathGame() {
+            soundClick();
+            mathScore = 0;
+            const scoreEl = document.getElementById('mathScore');
+            if (scoreEl) scoreEl.textContent = '0';
+            initMathGame();
+        }
+
+        function renderMathNumberButtons() {
+            const container = document.getElementById('mathNumbersGrid');
+            if (!container) return;
+            const numbers = [1, 2, 3, 4, 5];
+            container.innerHTML = numbers.map(num => `
+                <button onclick="checkMathAnswer(${num})" class="bg-amber-400 hover:bg-amber-300 text-amber-950 font-title text-2xl sm:text-3xl py-3 sm:py-4 rounded-2xl border-4 border-amber-500 shadow-fun flex items-center justify-center transition transform active:scale-95">
+                    ${num}
+                </button>
+            `).join('');
+        }
+
+        function nextMathRound() {
+            // Count between 1 and 5 (ideal range for pre-school)
+            currentMathTargetCount = Math.floor(Math.random() * 5) + 1;
+            currentMathAnimal = mathAnimals[Math.floor(Math.random() * mathAnimals.length)];
+
+            const container = document.getElementById('mathAnimalsContainer');
+            const promptEl = document.getElementById('mathQuestionPrompt');
+            const feedback = document.getElementById('mathFeedback');
+            if (feedback) feedback.classList.add('hidden');
+
+            const animalLabel = currentMathTargetCount === 1 ? currentMathAnimal.singular : currentMathAnimal.name;
+            if (promptEl) promptEl.textContent = `Quantos amigos estão aqui?`;
+
+            if (container) {
+                container.innerHTML = '';
+                for (let i = 0; i < currentMathTargetCount; i++) {
+                    const item = document.createElement('div');
+                    item.className = "cursor-pointer p-2 bg-white rounded-2xl border-2 border-emerald-300 shadow-sm transform hover:scale-110 active:scale-95 transition animate-bounce";
+                    item.style.animationDelay = `${i * 120}ms`;
+
+                    if (currentMathAnimal.isImage) {
+                        item.innerHTML = `<img src="${CUQUEDO_DRIVE_IMG}" class="w-14 h-14 sm:w-16 sm:h-16 object-contain" alt="Cuquedo" onerror="this.src='${CUQUEDO_REAL_IMG}'; this.onerror=null;">`;
+                    } else {
+                        item.innerHTML = `<span class="text-5xl sm:text-6xl select-none">${currentMathAnimal.emoji}</span>`;
+                    }
+
+                    // Tapping each animal plays a count sound
+                    item.onclick = function() {
+                        playTone(320 + i * 80, 'sine', 0.15, 0.2);
+                        item.classList.remove('animate-bounce');
+                        item.classList.add('scale-125');
+                        setTimeout(() => item.classList.remove('scale-125'), 200);
+                    };
+
+                    container.appendChild(item);
+                }
+            }
+
+            speakText(`Quantos estão aqui no bosque? Conta e toca no número certo!`);
+        }
+
+        function checkMathAnswer(chosenNumber) {
+            const feedback = document.getElementById('mathFeedback');
+            if (!feedback) return;
+            feedback.classList.remove('hidden');
+
+            if (chosenNumber === currentMathTargetCount) {
+                soundSuccess();
+                mathScore += 1;
+                const scoreEl = document.getElementById('mathScore');
+                if (scoreEl) scoreEl.textContent = mathScore;
+
+                const nameToSpeak = currentMathTargetCount === 1 ? currentMathAnimal.singular : currentMathAnimal.name;
+                feedback.className = "mt-4 p-3 rounded-2xl text-center font-title text-sm bg-emerald-100 text-emerald-900 border-2 border-emerald-300 animate-bounce max-w-md mx-auto";
+                feedback.innerHTML = `🎉 Parabéns! São exatamente ${currentMathTargetCount}! (+1)`;
+
+                speakText(`Muito bem! Acertaste! São ${currentMathTargetCount}!`);
+                showToast(`Muito bem! Eram ${currentMathTargetCount}! ⭐`, '🔢');
+
+                setTimeout(nextMathRound, 1800);
+            } else {
+                soundCuquedoJump();
+                feedback.className = "mt-4 p-3 rounded-2xl text-center font-title text-sm bg-rose-100 text-rose-900 border-2 border-rose-300 max-w-md mx-auto";
+                feedback.innerHTML = `Ups! Conta outra vez com o dedinho nos bichinhos e escolhe de novo!`;
+                speakText("Quase! Conta com o dedinho e tenta outra vez!");
+            }
+        }
+
+        /* ==========================================================
+           STREAMING_CHUNK:Implementing Color Sorting game with forest plants and flowers...
+           ========================================================== */
+        let colorSortScore = 0;
+        let currentColorPlant = null;
+
+        const colorBaskets = [
+            { id: 'verde', name: 'Verde', bgClass: 'bg-emerald-500 hover:bg-emerald-400 text-white border-emerald-600', hex: '#10b981', icon: '🧺' },
+            { id: 'rosa', name: 'Cor-de-Rosa', bgClass: 'bg-pink-500 hover:bg-pink-400 text-white border-pink-600', hex: '#ec4899', icon: '🧺' },
+            { id: 'vermelho', name: 'Vermelho', bgClass: 'bg-rose-600 hover:bg-rose-500 text-white border-rose-700', hex: '#e11d48', icon: '🧺' },
+            { id: 'amarelo', name: 'Amarelo', bgClass: 'bg-amber-400 hover:bg-amber-300 text-amber-950 border-amber-500', hex: '#facc15', icon: '🧺' },
+            { id: 'azul', name: 'Azul / Violeta', bgClass: 'bg-sky-500 hover:bg-sky-400 text-white border-sky-600', hex: '#0ea5e9', icon: '🧺' }
+        ];
+
+        // Flores e plantas com cores claras e sem ambiguidades
+        const colorPlantsData = [
+            { id: 'folha', name: 'Folha da Árvore', colorId: 'verde', emoji: '🌿', spoken: 'Muito bem! Esta folha da floresta foi para o cesto verde!' },
+            { id: 'trevo', name: 'Trevo dos Bosques', colorId: 'verde', emoji: '🍀', spoken: 'Boa! O trevinho dos bosques ficou bem guardado!' },
+            { id: 'tulipa-rosa', name: 'Tulipa', colorId: 'rosa', emoji: '🌷', spoken: 'Excelente! A tulipa com as suas pétalas cor-de-rosa está no cesto certo!' },
+            { id: 'flor-rosa', name: 'Florzinha de Cerejeira', colorId: 'rosa', emoji: '🌸', spoken: 'Muito bem! Guardaste a florzinha cor-de-rosa!' },
+            { id: 'rosa', name: 'Rosa da Selva', colorId: 'vermelho', emoji: '🌹', spoken: 'Boa! A rosa com pétalas vermelhas está no cesto certo!' },
+            { id: 'flor-amarela', name: 'Flor Dourada da Selva', colorId: 'amarelo', emoji: '🏵️', spoken: 'Acertaste! Esta flor amarela ficou muito bem guardada!' },
+            { id: 'folha-outono', name: 'Folha Dourada', colorId: 'amarelo', emoji: '🍂', spoken: 'Muito bem! A folha amarela está no cesto certo!' },
+            { id: 'hortensia', name: 'Flor Azul / Violeta', colorId: 'azul', emoji: '🪻', spoken: 'Fantástico! Guardaste a flor azulada no sítio certo!' }
+        ];
+
+        function initColorSortGame() {
+            renderColorBaskets();
+            nextColorPlant();
+        }
+
+        function resetColorGame() {
+            soundClick();
+            colorSortScore = 0;
+            const scoreEl = document.getElementById('colorSortScore');
+            if (scoreEl) scoreEl.textContent = '0';
+            initColorSortGame();
+        }
+
+        function renderColorBaskets() {
+            const container = document.getElementById('colorBasketsGrid');
+            if (!container) return;
+            container.innerHTML = colorBaskets.map(basket => `
+                <button onclick="checkColorAnswer('${basket.id}')" class="${basket.bgClass} p-4 sm:p-5 rounded-3xl border-4 shadow-fun flex flex-col items-center justify-center gap-2 transition transform active:scale-95 group">
+                    <span class="text-4xl sm:text-5xl group-hover:scale-110 transition">${basket.icon}</span>
+                    <span class="font-title text-base sm:text-lg">${basket.name}</span>
+                </button>
+            `).join('');
+        }
+
+        function nextColorPlant() {
+            const randomIndex = Math.floor(Math.random() * colorPlantsData.length);
+            currentColorPlant = colorPlantsData[randomIndex];
+
+            const box = document.getElementById('colorSortAnimalBox');
+            const nameEl = document.getElementById('colorSortAnimalName');
+            const feedback = document.getElementById('colorSortFeedback');
+            if (feedback) feedback.classList.add('hidden');
+
+            if (box) {
+                box.innerHTML = `<span class="text-6xl sm:text-7xl select-none">${currentColorPlant.emoji}</span>`;
+            }
+
+            if (nameEl) nameEl.textContent = currentColorPlant.name;
+            // Fala apenas o nome da flor/planta sem revelar a resposta
+            speakText(`Olha para esta flor: ${currentColorPlant.name}! Em que cesto a vais guardar?`);
+        }
+
+        function checkColorAnswer(chosenColorId) {
+            const feedback = document.getElementById('colorSortFeedback');
+            if (!feedback || !currentColorPlant) return;
+            feedback.classList.remove('hidden');
+
+            if (chosenColorId === currentColorPlant.colorId) {
+                soundSuccess();
+                colorSortScore += 1;
+                const scoreEl = document.getElementById('colorSortScore');
+                if (scoreEl) scoreEl.textContent = colorSortScore;
+
+                feedback.className = "mt-4 p-3 rounded-2xl text-center font-title text-sm bg-emerald-100 text-emerald-900 border-2 border-emerald-300 animate-bounce max-w-md mx-auto";
+                feedback.innerHTML = `🎉 Muito bem! ${currentColorPlant.name} guardada no cesto certo! (+1)`;
+                speakText(currentColorPlant.spoken);
+                showToast(`Boa! Cesto correto! ⭐`, '🌿');
+
+                setTimeout(nextColorPlant, 1600);
+            } else {
+                soundCuquedoJump();
+                feedback.className = "mt-4 p-3 rounded-2xl text-center font-title text-sm bg-rose-100 text-rose-900 border-2 border-rose-300 max-w-md mx-auto";
+                feedback.innerHTML = `Ups! Essa não é a cor certa! Tenta outro cesto!`;
+                speakText("Quase! Tenta outro cesto!");
+            }
+        }
+
+        let ffScore = 0;
+        let ffCurrentTarget = null;
+        const ffAnimals = [
+            { id: 'cuquedo', name: 'O Cuquedo', isImage: true },
+            { id: 'girafa', name: 'Girafa', emoji: '🦒' },
+            { id: 'elefante', name: 'Elefante', emoji: '🐘' },
+            { id: 'hipopotamo', name: 'Hipopótamo', emoji: '🦛' },
+            { id: 'leao', name: 'Leão', emoji: '🦁' },
+            { id: 'zebra', name: 'Zebra', emoji: '🦓' }
+        ];
+
+        function initFiguraFundoGame() {
+            const randomIndex = Math.floor(Math.random() * ffAnimals.length);
+            ffCurrentTarget = ffAnimals[randomIndex];
+
+            const container = document.getElementById('ffSilhouetteContainer');
+            const feedbackBox = document.getElementById('ffFeedbackBox');
+            feedbackBox.classList.add('hidden');
+
+            if (ffCurrentTarget.isImage) {
+                container.innerHTML = `
+                    <img id="ffTargetImg" src="${CUQUEDO_DRIVE_IMG}" class="w-36 h-36 sm:w-44 sm:h-44 object-contain filter brightness-0 contrast-200 transition-all duration-300 drop-shadow-lg" alt="Silhueta" onerror="this.src='${CUQUEDO_REAL_IMG}'; this.onerror=null;">
+                `;
+            } else {
+                container.innerHTML = `
+                    <span id="ffTargetEmoji" class="text-8xl sm:text-9xl filter brightness-0 contrast-200 opacity-90 select-none drop-shadow-md">${ffCurrentTarget.emoji}</span>
+                `;
+            }
+
+            const otherOptions = ffAnimals.filter(a => a.id !== ffCurrentTarget.id)
+                                         .sort(() => Math.random() - 0.5)
+                                         .slice(0, 3);
+            const roundChoices = [ffCurrentTarget, ...otherOptions].sort(() => Math.random() - 0.5);
+
+            const optionsGrid = document.getElementById('ffOptionsGrid');
+            optionsGrid.innerHTML = roundChoices.map(animal => `
+                <button onclick="checkFiguraFundo('${animal.id}')" class="ff-opt-btn bg-white hover:bg-amber-100 p-3 sm:p-4 rounded-2xl border-2 border-amber-300 shadow-fun flex flex-col items-center justify-center gap-1 transition active:scale-95">
+                    ${animal.isImage ? `<img src="${CUQUEDO_DRIVE_IMG}" class="w-10 h-10 object-contain" onerror="this.src='${CUQUEDO_REAL_IMG}'; this.onerror=null;">` : `<span class="text-3xl">${animal.emoji}</span>`}
+                    <span class="font-title text-xs sm:text-sm text-slate-800">${animal.name}</span>
+                </button>
+            `).join('');
+        }
+
+        function checkFiguraFundo(selectedId) {
+            const feedbackBox = document.getElementById('ffFeedbackBox');
+            const feedbackMsg = document.getElementById('ffFeedbackMsg');
+            feedbackBox.classList.remove('hidden');
+
+            const targetImg = document.getElementById('ffTargetImg');
+            const targetEmoji = document.getElementById('ffTargetEmoji');
+            if (targetImg) targetImg.classList.remove('brightness-0', 'contrast-200');
+            if (targetEmoji) targetEmoji.classList.remove('brightness-0', 'contrast-200');
+
+            if (selectedId === ffCurrentTarget.id) {
+                soundSuccess();
+                ffScore += 2;
+                document.getElementById('ffScore').textContent = ffScore;
+                feedbackBox.className = "mt-4 p-3 rounded-2xl text-center font-title text-sm bg-emerald-100 text-emerald-900 border-2 border-emerald-300 animate-bounce";
+                feedbackMsg.innerHTML = `🎉 Parabéns! Acertaste, é ${ffCurrentTarget.name}! (+2 pontos)`;
+                speakText(`Muito bem! Acertaste na silhueta! É ${ffCurrentTarget.name}!`);
+                showToast(`Muito bem! É ${ffCurrentTarget.name}!`, '⭐');
+
+                setTimeout(initFiguraFundoGame, 1800);
+            } else {
+                soundCuquedoJump();
+                feedbackBox.className = "mt-4 p-3 rounded-2xl text-center font-title text-sm bg-rose-100 text-rose-900 border-2 border-rose-300";
+                feedbackMsg.innerHTML = `Ups! Era ${ffCurrentTarget.name}! Vamos tentar a próxima!`;
+                speakText(`Ups! A silhueta era ${ffCurrentTarget.name}! Vamos à próxima!`);
+
+                setTimeout(initFiguraFundoGame, 2000);
+            }
+        }
+
+        const animalCardsData = [
+            {
+                id: 'girafa',
+                name: 'A Girafa Curiosa',
+                tag: 'Pescoço Comprido',
+                emoji: '🦒',
+                description: 'A girafa é o animal mais alto de toda a savana! Com o seu pescoço gigante, come as folhas mais verdes no cimo das árvores. No livro, estica bem o pescoço para ver onde anda o Cuquedo!',
+                questions: [
+                    { text: 'A girafa consegue alcançar as folhas mais altas das árvores?', answer: true },
+                    { text: 'A girafa tem asas compridas e consegue voar no céu?', answer: false },
+                    { text: 'A girafa tem um pescoço muito comprido para ver tudo ao longe?', answer: true },
+                    { text: 'A girafa nada debaixo da água o dia todo como um peixe?', answer: false }
+                ]
+            },
+            {
+                id: 'elefante',
+                name: 'O Elefante Grandalhão',
+                tag: 'Tromba Poderosa',
+                emoji: '🐘',
+                description: 'O elefante é o maior e mais pesado animal da terra! Tem uma tromba fantástica que funciona como chuveiro e mãos. Quando ouve barulho no mato, bate as suas orelhas bem depressa!',
+                questions: [
+                    { text: 'O elefante usa a tromba para beber água e tomar banho fresco?', answer: true },
+                    { text: 'O elefante é tão pequenino que cabe dentro de uma noz?', answer: false },
+                    { text: 'O elefante tem orelhas grandes que abana para se refrescar?', answer: true },
+                    { text: 'O elefante bota ovos no ninho como uma galinha?', answer: false }
+                ]
+            },
+            {
+                id: 'hipopotamo',
+                name: 'O Hipopótamo Guloso',
+                tag: 'Rei do Mergulho',
+                emoji: '🦛',
+                description: 'O hipopótamo adora passar o dia na água do rio e na lama para proteger a pele do calor. Tem uma boca enorme que abre bem grande, mas ficou cheio de medo do susto do Cuquedo!',
+                questions: [
+                    { text: 'O hipopótamo gosta de passar o dia fresquinho dentro da água e lama?', answer: true },
+                    { text: 'O hipopótamo vive empoleirado nos galhos finos das árvores?', answer: false },
+                    { text: 'O hipopótamo consegue abrir uma boca muito grande para bocejar?', answer: true },
+                    { text: 'O hipopótamo tem penas coloridas pelo corpo todo?', answer: false }
+                ]
+            },
+            {
+                id: 'zebra',
+                name: 'A Zebra Saltitona',
+                tag: 'Riscas Mágicas',
+                emoji: '🦓',
+                description: 'A zebra tem um padrão de riscas pretas e brancas único no mundo! Corre muito veloz em manada pelos campos da savana para avisar todos os amigos dos perigos do bosque.',
+                questions: [
+                    { text: 'A zebra tem o corpo coberto de riscas pretas e brancas?', answer: true },
+                    { text: 'A zebra tem bolinhas cor-de-rosa em vez de riscas?', answer: false },
+                    { text: 'A zebra corre muito depressa junto das amigas na savana?', answer: true },
+                    { text: 'As zebras vivem no cimo dos telhados das casas?', answer: false }
+                ]
+            },
+            {
+                id: 'leao',
+                name: 'O Leão Corajoso',
+                tag: 'Rei da Selva',
+                emoji: '🦁',
+                description: 'O leão tem uma juba dourada imponente e um rugido bem forte! Mesmo sendo muito corajoso e respeitado por todos os bichos, também ficou muito curioso para ver o Cuquedo!',
+                questions: [
+                    { text: 'O leão tem uma juba majestosa e um rugido que se ouve ao longe?', answer: true },
+                    { text: 'O leão canta baixinho "piu-piu" como um passarinho recém-nascido?', answer: false },
+                    { text: 'O leão é conhecido como o rei da selva e da savana?', answer: true },
+                    { text: 'O leão tem seis pernas e duas cabeças?', answer: false }
+                ]
+            },
+            {
+                id: 'cuquedo',
+                name: 'O Cuquedo',
+                tag: 'O Monstrinho Brincalhão',
+                isImage: true,
+                description: 'O Cuquedo é um bicho todo peludo e emaranhado, com pernas compridas e olhos bem arregalados! Ele anda pelo mato e grita "BUUUH!", mas só quer brincar e ter muitos amigos!',
+                questions: [
+                    { text: 'O Cuquedo é todo peludo e adora dar saltos e gritar "BUUUH!"?', answer: true },
+                    { text: 'O Cuquedo tem escamas e vive no fundo do mar a nadar?', answer: false },
+                    { text: 'No fundo, o Cuquedo não quer fazer mal e só quer arranjar amigos?', answer: true },
+                    { text: 'O Cuquedo é um robô de metal com rodas em vez de pernas?', answer: false }
+                ]
+            }
+        ];
+
+        let currentCardIndex = 0;
+        let currentQuestionIndex = 0;
+
+        function initAnimalCards() {
+            const chipsContainer = document.getElementById('animalChipsContainer');
+            chipsContainer.innerHTML = animalCardsData.map((animal, idx) => `
+                <button onclick="selectAnimalCard(${idx})" class="chip-btn ${idx === currentCardIndex ? 'bg-rose-500 text-white shadow-md' : 'bg-white hover:bg-rose-100 text-rose-900 border border-rose-200'} px-3 py-1.5 rounded-full font-title text-xs flex items-center gap-1.5 flex-shrink-0 transition">
+                    ${animal.isImage ? `<img src="${CUQUEDO_DRIVE_IMG}" class="w-4 h-4 object-contain" onerror="this.src='${CUQUEDO_REAL_IMG}'; this.onerror=null;">` : `<span>${animal.emoji}</span>`}
+                    <span>${animal.name.split(' ')[1] || animal.name}</span>
+                </button>
+            `).join('');
+
+            renderAnimalCard();
+        }
+
+        function selectAnimalCard(index) {
+            currentCardIndex = index;
+            currentQuestionIndex = 0;
+            soundClick();
+            initAnimalCards();
+        }
+
+        function prevAnimalCard() {
+            soundClick();
+            currentCardIndex = (currentCardIndex - 1 + animalCardsData.length) % animalCardsData.length;
+            currentQuestionIndex = 0;
+            initAnimalCards();
+        }
+
+        function nextAnimalCard() {
+            soundClick();
+            currentCardIndex = (currentCardIndex + 1) % animalCardsData.length;
+            currentQuestionIndex = 0;
+            initAnimalCards();
+        }
+
+        function renderAnimalCard() {
+            const animal = animalCardsData[currentCardIndex];
+            const avatar = document.getElementById('cardAnimalAvatar');
+            if (animal.isImage) {
+                avatar.innerHTML = `<img src="${CUQUEDO_DRIVE_IMG}" class="w-full h-full object-contain filter drop-shadow animate-pulse" alt="Cuquedo" onerror="this.src='${CUQUEDO_REAL_IMG}'; this.onerror=null;">`;
+            } else {
+                avatar.innerHTML = `<span class="text-6xl sm:text-7xl select-none animate-bounce">${animal.emoji}</span>`;
+            }
+
+            document.getElementById('cardAnimalTag').textContent = animal.tag;
+            document.getElementById('cardAnimalName').textContent = animal.name;
+            document.getElementById('cardAnimalDesc').textContent = animal.description;
+            document.getElementById('cardCounterIndicator').textContent = `${currentCardIndex + 1} / ${animalCardsData.length}`;
+
+            renderCurrentQuestion();
+        }
+
+        function renderCurrentQuestion() {
+            const animal = animalCardsData[currentCardIndex];
+            const q = animal.questions[currentQuestionIndex % animal.questions.length];
+            document.getElementById('cardQuestionText').textContent = q.text;
+
+            const resultBanner = document.getElementById('cardQuizResult');
+            resultBanner.classList.add('hidden');
+
+            // Automatically read the question out loud for non-readers
+            speakText("Desafio: " + q.text + " Será verdadeiro ou falso?");
+        }
+
+        function nextAnimalQuestion() {
+            soundClick();
+            currentQuestionIndex++;
+            renderCurrentQuestion();
+            speakText("Nova pergunta: " + animalCardsData[currentCardIndex].questions[currentQuestionIndex % animalCardsData[currentCardIndex].questions.length].text);
+        }
+
+        function answerTrueFalse(userAnswer) {
+            const animal = animalCardsData[currentCardIndex];
+            const q = animal.questions[currentQuestionIndex % animal.questions.length];
+            const isCorrect = (userAnswer === q.answer);
+
+            const resultBanner = document.getElementById('cardQuizResult');
+            resultBanner.classList.remove('hidden');
+
+            if (isCorrect) {
+                soundSuccess();
+                resultBanner.className = "mt-4 p-3 rounded-xl text-center font-title text-sm bg-emerald-100 text-emerald-900 border-2 border-emerald-300 animate-bounce";
+                resultBanner.innerHTML = `🎉 Resposta Certa! Parabéns pequeno detetive!`;
+                speakText("Muito bem! Acertaste na resposta!");
+                showToast("Acertaste no desafio! ⭐", '🏆');
+
+                setTimeout(() => {
+                    currentQuestionIndex++;
+                    renderCurrentQuestion();
+                }, 1600);
+            } else {
+                soundCuquedoJump();
+                resultBanner.className = "mt-4 p-3 rounded-xl text-center font-title text-sm bg-rose-100 text-rose-900 border-2 border-rose-300";
+                resultBanner.innerHTML = `❌ Não era bem isso! Ouve com atenção e tenta outra vez!`;
+                speakText("Quase! Tenta outra vez ou escolhe a outra opção!");
+            }
+        }
+
+        function readCurrentAnimalCard() {
+            const animal = animalCardsData[currentCardIndex];
+            speakText(animal.name + ". " + animal.description);
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            setSafeCuquedoImage(document.getElementById('mascotHeaderImg'));
+            setSafeCuquedoImage(document.getElementById('heroCuquedoImg'));
+            setSafeCuquedoImage(document.getElementById('heroBadgeCuquedoImg'));
+            setSafeCuquedoImage(document.getElementById('soundboardCuquedoImg'));
+            setSafeCuquedoImage(document.getElementById('footerCuquedoImg'));
+
+            resizeCanvas();
+            resetHideAndSeek();
+            renderGallery();
+            window.addEventListener('resize', resizeCanvas);
+        };
+    </script>
+</body>
+</html>
